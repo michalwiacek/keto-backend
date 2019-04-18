@@ -56,7 +56,9 @@ export default {
   ** Axios module configuration
   */
   axios: {
-    // See https://github.com/nuxt-community/axios-module#options
+    host: 'localhost',
+    port: 8080,
+    prefix: '/api/v1'
   },
   /*
   ** Build configuration

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // process.env.CLIENT_URL <- dodać obsługę ENV
-const apiUrl = 'http://localhost:4000'
+const apiUrl = 'http://localhost:8080/api/v1'
 
 export const state = () => ({
   articles: []

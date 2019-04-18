@@ -53,6 +53,10 @@ export default {
   $_veeValidate: {
     validator: 'new'
   },
+  data: () => ({
+    email: '',
+    checkbox: null
+  }),
   computed: {
     binding() {
       const binding = {}
@@ -60,10 +64,6 @@ export default {
       return binding
     }
   },
-  data: () => ({
-    email: '',
-    checkbox: null
-  }),
   mounted() {
     this.$validator.localize('en', this.dictionary)
   },
