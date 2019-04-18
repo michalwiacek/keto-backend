@@ -24,5 +24,6 @@ w srodku odpalic:
 docker-compose up
 ```
 
-frontend: localhost:3000
-backend: localhost:8080
+frontend: http://localhost:3000
+
+backend: http://localhost:8080
