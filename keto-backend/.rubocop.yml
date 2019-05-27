@@ -1,0 +1,30 @@
+inherit_from:
+  - http://relaxed.ruby.style/rubocop.yml
+
+Rails:
+  Enabled: true
+
+AllCops:
+  TargetRubyVersion: 2.6
+  Exclude:
+    - db/schema.rb
+    - spec/**/*
+    - config/**/*
+    - bin/*
+
+Rails/Output:
+  Exclude:
+    - db/seeds.rb
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Style/StructInheritance:
+  Exclude:
+    - app/policies/**/*

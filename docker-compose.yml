@@ -9,6 +9,7 @@ services:
       context: keto-backend
       args:
         UID: ${UID:-1001}
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 8080 -b 0.0.0.0"
     volumes:
       - ./keto-backend:/usr/src/app
     ports:
@@ -23,6 +24,7 @@ services:
         UID: ${UID:-1001}
     volumes:
       - ./keto-frontend:/usr/src/app
+    working_dir: /usr/src/app
     ports:
       - "3000:3000"
     user: frontend

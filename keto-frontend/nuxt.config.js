@@ -34,6 +34,10 @@ export default {
   plugins: [
   ],
 
+  router: {
+    middleware: ['auth']
+  },
+
   /*
   ** Nuxt.js modules
   */
@@ -49,10 +53,17 @@ export default {
     }]
   ],
   auth: {
-    endpoints: {
-      login: { url: '/users/sign_in' },
-      logout: { url: '/users/sign_out', method: 'delete' },
-      user: { url: '/users/current' }
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/users/sign_in', method: 'post', propertyName: 'token' },
+          logout: { url: '/users/sign_out', method: 'delete' },
+          user: { url: '/users/current', method: 'get', propertyName: 'user' }
+        }
+      }
+    },
+    redirect: {
+      callback: '/callback'
     }
   },
   styleResources: {

@@ -1,10 +1,10 @@
 <template lang="pug">
   v-container(align-center justify-center row fill-height).pa-6.ma-6.dark.articles
     ul
-      li(v-for="eatCategory in eatCategories")
-        v-checkbox(v-model="checkedEatCategories"
-                  :value="eatCategory.id"
-                  :label="eatCategory.title")
+      li(v-for="tag in tags")
+        v-checkbox(v-model="checkedTags"
+                  :value="tag.id"
+                  :label="tag.title")
     ul
       li(v-for="post in filteredPlaces")
         span {{ post.title }}
@@ -13,8 +13,8 @@
 <script>
 export default {
   data: () => ({
-    checkedEatCategories: [],
-    eatCategories: [{
+    checkedTags: [],
+    tags: [{
       id: 1,
       title: 'Category 1'
     }, {
@@ -33,14 +33,14 @@ export default {
     posts: [{
       id: 1,
       title: 'Product 1',
-      eat_categories: [{
+      tags: [{
         id: 1
       }]
     },
     {
       id: 2,
       title: 'Product 2',
-      eat_categories: [{
+      tags: [{
         id: 1
       },
       {
@@ -54,7 +54,7 @@ export default {
     {
       id: 3,
       title: 'Product 3',
-      eat_categories: [{
+      tags: [{
         id: 1
       },
       {
@@ -67,8 +67,8 @@ export default {
   computed: {
     filteredPlaces: function () {
       return this.posts.filter(post =>
-        post.eat_categories.some(tag =>
-          this.checkedEatCategories.includes(tag.id)
+        post.tags.some(tag =>
+          this.checkedTags.includes(tag.id)
         )
       )
     }

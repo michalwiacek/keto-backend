@@ -1,7 +1,7 @@
 <template>
   <v-layout class="mt-5">
     <v-flex>
-      <v-card v-if="$auth.state.loggedIn">
+      <v-card v-if="$auth.loggedIn">
         <v-alert type="error" :value="error">{{ error }}</v-alert>
         <v-card-text>
           Logged in as {{ $auth.state.user.email }}
@@ -36,15 +36,21 @@ export default {
     }
   },
   methods: {
-    login: function () {
-      this.$auth.login({
-        data: {
-          user: {
-            email: this.email,
-            password: this.password
+    async login() {
+      this.error = null
+
+      await this.$auth
+        .loginWith('local', {
+          data: {
+            user: {
+              email: this.email,
+              password: this.password
+            }
           }
-        }
-      }).catch((e) => { this.error = e + '' })
+        })
+        .catch((e) => {
+          this.error = e + ''
+        })
     },
     logout: function () {
       this.$auth.logout().catch((e) => { this.error = e + '' })
