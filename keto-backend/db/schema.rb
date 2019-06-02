@@ -10,10 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_26_204207) do
+ActiveRecord::Schema.define(version: 2019_05_30_212125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.string "description"
+    t.string "main_image"
+    t.string "main_image_background_hex_color", default: "#dddddd"
+    t.string "title"
+    t.text "body_html"
+    t.text "body_markdown"
+    t.string "language"
+    t.integer "hotness_score", default: 0
+    t.datetime "edited_at"
+    t.integer "organic_page_views_count", default: 0
+    t.integer "organic_page_views_past_month_count", default: 0
+    t.integer "organic_page_views_past_week_count", default: 0
+    t.string "password"
+    t.string "path"
+    t.boolean "archived", default: false
+    t.boolean "published", default: false
+    t.datetime "published_at"
+    t.integer "reading_time", default: 0
+    t.boolean "show_comments", default: true
+    t.string "canonical_url"
+    t.string "ids_for_suggested_articles", default: "[]"
+    t.boolean "featured", default: false
+    t.text "slug"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_articles_on_user_id"
+  end
 
   create_table "examples", force: :cascade do |t|
     t.string "name"
@@ -26,6 +56,16 @@ ActiveRecord::Schema.define(version: 2019_04_26_204207) do
     t.string "jti", null: false
     t.datetime "exp"
     t.index ["jti"], name: "index_jwt_blacklist_on_jti"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.string "resource_type"
+    t.bigint "resource_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
+    t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
@@ -80,6 +120,14 @@ ActiveRecord::Schema.define(version: 2019_04_26_204207) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
+  end
+
+  create_table "users_roles", id: false, force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "role_id"
+    t.index ["role_id"], name: "index_users_roles_on_role_id"
+    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+    t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
 end

@@ -1,7 +1,18 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  rolify
+
+  after_initialize :set_default_role, if: :new_record?
+
+  has_many :articles, dependent: :destroy
+
   devise :database_authenticatable, :registerable, :lockable,
          :recoverable, :rememberable, :validatable, :trackable, :confirmable,
          :jwt_authenticatable, jwt_revocation_strategy: JwtBlacklist
+
+  validates :email, presence: true, uniqueness: true, format: { with: Devise.email_regexp }
+  validates :roles, presence: true
+
+  def set_default_role
+    self.add_role(:normal)
+  end
 end

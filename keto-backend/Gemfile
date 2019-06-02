@@ -8,36 +8,45 @@ gem 'jbuilder', '~> 2.5'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.2'
+gem 'turbolinks'
 
 gem 'administrate'
 gem 'administrate-field-trix'
+gem 'administrate-field-acts_as_taggable'
 gem 'trix-rails', require: 'trix'
 gem 'devise'
 gem 'devise-jwt'
 gem 'fast_jsonapi'
 gem 'rack-cors'
 gem 'acts-as-taggable-on', '~> 6.0'
+gem 'rolify'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'dotenv-rails', '~> 2.5' # Autoload dotenv in Rails app (for puma only, foreman will autoload .env file)
+  gem 'dotenv-rails', '~> 2.7', '>= 2.7.2' # Autoload dotenv in Rails app (for puma only, foreman will autoload .env file)
   gem 'factory_bot_rails' # Spec factories
-  gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master' # Generate fake data to populate objects
   gem 'pry', '~> 0.12.2' # An IRB alternative and runtime developer console
-  gem 'pry-byebug', '~> 3.6' # Combine 'pry' with 'byebug'. Adds 'step', 'next', 'finish', 'continue' and 'break' commands to control execution.
-  gem 'pry-rails', '~> 0.3.7' # Use Pry as your rails console
+  gem 'pry-byebug', '~> 3.7' # Combine 'pry' with 'byebug'. Adds 'step', 'next', 'finish', 'continue' and 'break' commands to control execution.
+  gem 'pry-rails', '~> 0.3.9' # Use Pry as your rails console
   gem 'pundit-matchers', '~> 1.6.0'
-  gem 'rspec-rails', '~> 3.8'
+  gem 'rspec-rails', '~> 3.8', '>= 3.8.2'
   gem 'rspec_api_documentation' # Generate API documentation based on acceptance tests
-  gem 'rubocop', '~> 0.63.0' # Automatic Ruby code style checking tool. Aims to enforce the community-driven Ruby Style Guide.
+  gem 'rubocop', '~> 0.71.0', require: false # Automatic Ruby code style checking tool. Aims to enforce the community-driven Ruby Style Guide.
+  gem 'rubocop-rails'
   gem 'shoulda-matchers', '4.0.0.rc1' # Making tests easy on the fingers and eyes
 end
 
 group :development do
+  gem 'annotate', '~> 2.7', '>= 2.7.4' # Annotates Rails/ActiveRecord Models, routes, fixtures, and others based on the database schema.
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'ordinare', '~> 0.4.0' # Ordinare sorts gems in your Gemfile alphabetically
   gem 'web-console', '>= 3.3.0' # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
+end
+
+group :test do
+  gem 'ffaker'
+  gem 'database_cleaner', '~> 1.7'
 end
 
 gem 'decent_exposure', '~> 3.0', '>= 3.0.2' # Way to encapsulate shared emthods in controller

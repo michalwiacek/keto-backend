@@ -8,8 +8,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '2c77c277fe2bcafcd911dddffef4017d00d3e2aea2ca4cdbf986de1e74901c48883d22f43c93603117589bc469dee34c667094bc2ca64903a1fc9c27e2783439'
-
+  config.secret_key = 'e38230f0b3d796829b157df88f0678e5e7e08f620697d3c9f094e423885671093e33723101086eb66d08c08077a96a037c2667400260ca5f12c716b22146225c'
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -171,7 +170,7 @@ Devise.setup do |config|
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
-  config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
+  config.email_regexp = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
@@ -299,7 +298,11 @@ Devise.setup do |config|
 
   config.jwt do |jwt|
     jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
-
+    jwt.dispatch_requests = [
+      ['POST', %r{^/users/sign_in$}],
+      ['GET', %r{^/$}]
+    ]
+    jwt.request_formats = { user: [:json] }
     jwt.expiration_time = 1.day.to_i
   end
 end
