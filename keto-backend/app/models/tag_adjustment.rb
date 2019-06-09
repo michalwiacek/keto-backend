@@ -17,3 +17,4 @@ class TagAdjustment < ApplicationRecord
   def user_permissions
     errors.add(:user_id, "does not have privilege to adjust these tags") unless user&.has_role?(:tag_moderator, tag) || user&.has_role?(:admin) || user&.has_role?(:super_admin)
   end
+end
