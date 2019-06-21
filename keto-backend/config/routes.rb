@@ -6,15 +6,8 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    # devise_for :users, only: :sessions
-    # devise_scope :user do
-    #   get 'users/current', to: 'sessions#show'
-    # end
     resources :users, only: %i(index show new create edit update destroy)
-    # resources :jwt_blacklists
     resources :articles, only: %i(index show new create edit update destroy)
-    resources :tags
-    resources :taggings
     resources :roles, only: %i(index show)
 
     root to: 'users#index'

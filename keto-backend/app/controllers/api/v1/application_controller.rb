@@ -2,7 +2,7 @@ class Api::V1::ApplicationController < ActionController::API
   include Pundit
   include ActionController::MimeResponds
   respond_to :json
-  
+
   rescue_from Pundit::NotAuthorizedError, with: :render_forbidden
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response

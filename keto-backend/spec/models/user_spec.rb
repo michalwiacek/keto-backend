@@ -18,6 +18,6 @@ RSpec.describe User, type: :model do
   end
 
   describe "ActiveRecord associations" do
-    # it { expect(user).to have_many(:articles) }
+    it { expect(user).to have_many(:articles) }
   end
 end

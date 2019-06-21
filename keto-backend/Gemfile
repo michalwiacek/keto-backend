@@ -10,16 +10,20 @@ gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.2'
 gem 'turbolinks'
 
+gem 'acts-as-taggable-on', '~> 6.0'
 gem 'administrate'
-gem 'administrate-field-trix'
 gem 'administrate-field-acts_as_taggable'
-gem 'trix-rails', require: 'trix'
+gem 'administrate-field-carrierwave', '~> 0.4.1'
+gem 'administrate-field-image', '~> 1.1'
+gem 'administrate-field-simple_markdown', '~> 0.1.2'
+gem 'administrate-field-trix'
+gem 'carrierwave', '~> 1.0'
 gem 'devise'
 gem 'devise-jwt'
 gem 'fast_jsonapi'
 gem 'rack-cors'
-gem 'acts-as-taggable-on', '~> 6.0'
 gem 'rolify'
+gem 'trix-rails', require: 'trix'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -45,8 +49,8 @@ group :development do
 end
 
 group :test do
-  gem 'ffaker'
   gem 'database_cleaner', '~> 1.7'
+  gem 'ffaker'
 end
 
 gem 'decent_exposure', '~> 3.0', '>= 3.0.2' # Way to encapsulate shared emthods in controller
