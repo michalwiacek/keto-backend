@@ -15,4 +15,8 @@ class User < ApplicationRecord
   def set_default_role
     self.add_role(:normal)
   end
+
+  def name
+    "#{first_name} #{last_name}"
+  end
 end

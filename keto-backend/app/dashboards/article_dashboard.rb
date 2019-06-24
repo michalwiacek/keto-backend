@@ -47,11 +47,11 @@ class ArticleDashboard < Administrate::BaseDashboard
   #
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
-  COLLECTION_ATTRIBUTES = [
-    :user,
-    :id,
-    :description,
-    :main_image,
+  COLLECTION_ATTRIBUTES = %i[
+    user
+    title
+    published
+    featured
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -99,7 +99,6 @@ class ArticleDashboard < Administrate::BaseDashboard
     :body_markdown,
     :language,
     :hotness_score,
-    :edited_at,
     :organic_page_views_count,
     :organic_page_views_past_month_count,
     :organic_page_views_past_week_count,
@@ -119,7 +118,7 @@ class ArticleDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how articles are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(article)
-  #   "Article ##{article.id}"
-  # end
+  def display_resource(article)
+    "Article ##{article.id} - #{article.title}"
+  end
 end
