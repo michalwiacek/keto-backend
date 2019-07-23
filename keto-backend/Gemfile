@@ -12,8 +12,8 @@ gem 'turbolinks'
 
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'administrate'
+gem 'administrate-field-active_storage'
 gem 'administrate-field-acts_as_taggable'
-gem 'administrate-field-carrierwave', '~> 0.4.1'
 gem 'administrate-field-image', '~> 1.1'
 gem 'administrate-field-simple_markdown', '~> 0.1.2'
 gem 'administrate-field-trix'
@@ -23,6 +23,7 @@ gem 'devise-jwt'
 gem 'fast_jsonapi'
 gem 'rack-cors'
 gem 'rolify'
+gem 'mini_magick'
 gem 'trix-rails', require: 'trix'
 
 group :development, :test do

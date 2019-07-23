@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   after_initialize :set_default_role, if: :new_record?
 
+  has_one_attached :avatar
+
   has_many :articles, dependent: :destroy
 
   devise :database_authenticatable, :registerable, :lockable,

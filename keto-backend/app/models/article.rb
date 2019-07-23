@@ -1,7 +1,8 @@
 class Article < ApplicationRecord
   acts_as_taggable_on :tags
 
-  mount_uploader :main_image, MainImageUploader
+  has_one_attached :main_image
+  has_many_attached :article_images
 
   belongs_to :user
 

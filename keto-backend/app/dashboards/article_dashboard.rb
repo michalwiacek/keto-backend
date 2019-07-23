@@ -10,13 +10,19 @@ class ArticleDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     user: Field::BelongsTo,
     id: Field::Number,
+    tags: Field::ActsAsTaggable,
     description: Field::String,
-    main_image: Field::Carrierwave.with_options(
-      image: :standard,
-      multiple: false,
-      remove: false,
-      remote_url: false
-    ),
+    article_images: Field::ActiveStorage.with_options({
+      direct_upload: true,
+      # url_only: true,
+      show_in_index: true,
+      show_preview_size:  '150x200'
+    }),
+    main_image: Field::ActiveStorage.with_options({
+      direct_upload: true,
+      show_in_index: true,
+      show_preview_size: '150x200'
+    }),
     main_image_background_hex_color: Field::String,
     title: Field::String,
     body_html: Field::Trix,
@@ -49,9 +55,12 @@ class ArticleDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     user
+    main_image
+    tags
     title
     published
     featured
+    article_images
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -59,7 +68,9 @@ class ArticleDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :user,
     :id,
+    :tags,
     :description,
+    :article_images,
     :main_image,
     :main_image_background_hex_color,
     :title,
@@ -91,7 +102,9 @@ class ArticleDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :user,
+    :tags,
     :description,
+    :article_images,
     :main_image,
     :main_image_background_hex_color,
     :title,
@@ -120,5 +133,9 @@ class ArticleDashboard < Administrate::BaseDashboard
   #
   def display_resource(article)
     "Article ##{article.id} - #{article.title}"
+  end
+
+  def permitted_attributes
+    super + [:article_images => []]
   end
 end
