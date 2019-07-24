@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_23_202010) do
+ActiveRecord::Schema.define(version: 2019_07_24_124456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,9 +66,65 @@ ActiveRecord::Schema.define(version: 2019_07_23_202010) do
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
+  create_table "components", force: :cascade do |t|
+    t.bigint "ingredient_id"
+    t.bigint "recipe_id"
+    t.integer "type"
+    t.float "quantity"
+    t.index ["ingredient_id"], name: "index_components_on_ingredient_id"
+    t.index ["recipe_id"], name: "index_components_on_recipe_id"
+  end
+
   create_table "examples", force: :cascade do |t|
     t.string "name"
     t.string "colour"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string "name"
+    t.integer "calories"
+    t.float "total_fat"
+    t.float "saturated_fat"
+    t.float "trans_fat"
+    t.float "polyunsaturated_fat"
+    t.float "monounsaturated_fat"
+    t.float "cholesterol"
+    t.float "sodium"
+    t.float "total_carbohydrates"
+    t.float "dietary_fiber"
+    t.float "sugars"
+    t.float "added_sugars"
+    t.float "sugar_alcohol"
+    t.float "protein"
+    t.float "calcium"
+    t.float "iron"
+    t.float "vitamin_d"
+    t.float "potassium"
+    t.float "vitamin_a"
+    t.float "vitamin_c"
+    t.float "vitamin_e"
+    t.float "vitamin_k"
+    t.float "vitamin_b6"
+    t.float "vitamin_b12"
+    t.float "thiamin"
+    t.float "riboflavin"
+    t.float "niacin"
+    t.float "folate"
+    t.float "folic_acid"
+    t.float "biotin"
+    t.float "pantethenic_acid"
+    t.float "phosphorus"
+    t.float "iodine"
+    t.float "magnesium"
+    t.float "zinc"
+    t.float "selenium"
+    t.float "copper"
+    t.float "manganese"
+    t.float "chromium"
+    t.float "molybdenum"
+    t.float "chloride"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -79,6 +135,29 @@ ActiveRecord::Schema.define(version: 2019_07_23_202010) do
     t.index ["jti"], name: "index_jwt_blacklist_on_jti"
   end
 
+  create_table "recipes", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.text "body_markdown"
+    t.integer "cooking_time", default: 0
+    t.boolean "archived", default: false
+    t.boolean "published", default: false
+    t.datetime "published_at"
+    t.boolean "show_comments", default: true
+    t.boolean "featured", default: false
+    t.datetime "edited_at"
+    t.integer "organic_page_views_count", default: 0
+    t.integer "organic_page_views_past_month_count", default: 0
+    t.integer "organic_page_views_past_week_count", default: 0
+    t.string "language"
+    t.integer "hotness_score", default: 0
+    t.text "slug"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_recipes_on_user_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -87,6 +166,14 @@ ActiveRecord::Schema.define(version: 2019_07_23_202010) do
     t.datetime "updated_at", null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "steps", force: :cascade do |t|
+    t.text "description"
+    t.bigint "recipes_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipes_id"], name: "index_steps_on_recipes_id"
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|

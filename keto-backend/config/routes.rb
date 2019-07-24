@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: %i(index show new create edit update destroy)
     resources :articles, only: %i(index show new create edit update destroy)
-    resources :tags, only: %i(index show new create edit update destroy)
+    resources :recipes, only: %i(index show new create edit update destroy)
+    resources :steps, only: %i(index show new create edit update destroy)
+    resources :ingredients, only: %i(index show new create edit update destroy)
+    resources :components, only: %i(index show new create edit update destroy)
     resources :roles, only: %i(index show)
 
     root to: 'users#index'
