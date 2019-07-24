@@ -63,6 +63,9 @@ GEM
       administrate (< 1.0.0)
     administrate-field-image (1.1.0)
       administrate (>= 0.2.0.rc1)
+    administrate-field-nested_has_many (1.1.0)
+      administrate (> 0.8, < 1)
+      cocoon (~> 1.2, >= 1.2.11)
     administrate-field-simple_markdown (0.1.2)
       administrate (< 1.0.0)
       rails (>= 4.2, < 6)
@@ -88,6 +91,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    cocoon (1.2.14)
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
@@ -348,6 +352,7 @@ DEPENDENCIES
   administrate-field-active_storage
   administrate-field-acts_as_taggable
   administrate-field-image (~> 1.1)
+  administrate-field-nested_has_many
   administrate-field-simple_markdown (~> 0.1.2)
   administrate-field-trix
   annotate (~> 2.7, >= 2.7.4)

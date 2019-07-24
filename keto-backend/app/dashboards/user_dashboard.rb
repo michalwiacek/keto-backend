@@ -10,6 +10,8 @@ class UserDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     email: Field::String,
+    first_name: Field::String,
+    last_name: Field::String,
     admin: Field::Boolean,
     avatar: Field::ActiveStorage,
     roles: HasManyRolesField,
@@ -43,6 +45,8 @@ class UserDashboard < Administrate::BaseDashboard
     :avatar,
     :admin,
     :roles,
+    :first_name,
+    :last_name,
     :encrypted_password,
     :reset_password_token,
     :reset_password_sent_at,
@@ -55,6 +59,8 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :first_name,
+    :last_name,
     :avatar,
     :roles,
     :email,

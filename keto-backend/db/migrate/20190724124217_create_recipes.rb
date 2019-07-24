@@ -5,6 +5,7 @@ class CreateRecipes < ActiveRecord::Migration[5.2]
       t.text :description
       t.text :body_markdown
       t.integer :cooking_time, default: 0
+      t.integer :difficulty
       t.boolean :archived, default: false
       t.boolean :published, default: false
       t.datetime :published_at

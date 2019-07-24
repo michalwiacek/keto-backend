@@ -63,8 +63,8 @@ class IngredientDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :components,
-    :recipes,
+    # :components,
+    # :recipes,
     :id,
     :name,
   ].freeze
@@ -72,8 +72,8 @@ class IngredientDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :components,
-    :recipes,
+    # :components,
+    # :recipes,
     :id,
     :name,
     :calories,
@@ -125,8 +125,8 @@ class IngredientDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :components,
-    :recipes,
+    # :components,
+    # :recipes,
     :name,
     :calories,
     :total_fat,

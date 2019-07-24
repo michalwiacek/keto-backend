@@ -27,6 +27,7 @@ class RecipeDashboard < Administrate::BaseDashboard
     description: Field::Text,
     body_markdown: Field::SimpleMarkdown,
     cooking_time: Field::Number,
+    difficulty: Field::Number,
     archived: Field::Boolean,
     published: Field::Boolean,
     published_at: Field::DateTime,
@@ -68,6 +69,7 @@ class RecipeDashboard < Administrate::BaseDashboard
     :recipe_image,
     :body_markdown,
     :cooking_time,
+    :difficulty
     :archived,
     :published,
     :published_at,
@@ -99,6 +101,7 @@ class RecipeDashboard < Administrate::BaseDashboard
     :description,
     :body_markdown,
     :cooking_time,
+    :difficulty,
     :archived,
     :published,
     :published_at,
