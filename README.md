@@ -1,33 +1,32 @@
 # ketowcy
 
-dockerized
-nuxt + rails api
+next.js frontend and rails backend with graphql
 
-### instalacja
+~~### instalacja
 ```
 docker-compose build
 docker-compose run -u root backend bundle
 docker-compose run frontend npm install
 ```
 
-### stworzenie bazy danych w railsach:
+~~### stworzenie bazy danych w railsach:
 z jakiegos powodu trzeba to zrobic tak (pozniej naprawie):
 podlaczyc sie do basha w kontenerze:
 
 `docker-compose run backend bash`
 
-w srodku odpalic:
+~~w srodku odpalic:
 
 `rails db:create`
 
 `exit`
 
 
-### uruchomienie kontenerow
+~~### uruchomienie kontenerow
 ```
 docker-compose up
 ```
 
-frontend: http://localhost:3000
+~~frontend: http://localhost:3000
 
-backend: http://localhost:8080
+~~backend: http://localhost:8080
