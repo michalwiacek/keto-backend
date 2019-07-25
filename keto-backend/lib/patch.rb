@@ -41,6 +41,7 @@ ActiveSupport.on_load(:active_storage_blob) do
   ActiveStorage::Variation.prepend(Module.new do
     def initialize(transformations)
       return @transformations = transformations if transformations.is_a?(Symbol)
+
       super
     end
   end)

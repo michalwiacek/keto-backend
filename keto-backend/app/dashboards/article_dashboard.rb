@@ -13,16 +13,16 @@ class ArticleDashboard < Administrate::BaseDashboard
     tags: Field::ActsAsTaggable,
     description: Field::String,
     article_images: Field::ActiveStorage.with_options({
-      direct_upload: true,
-      # url_only: true,
-      show_in_index: true,
-      show_preview_size:  '150x200'
-    }),
+                                                        direct_upload: true,
+                                                        # url_only: true,
+                                                        show_in_index: true,
+                                                        show_preview_size: '150x200'
+                                                      }),
     main_image: Field::ActiveStorage.with_options({
-      direct_upload: true,
-      show_in_index: true,
-      show_preview_size: '150x200'
-    }),
+                                                    direct_upload: true,
+                                                    show_in_index: true,
+                                                    show_preview_size: '150x200'
+                                                  }),
     main_image_background_hex_color: Field::String,
     title: Field::String,
     body_html: Field::Trix,

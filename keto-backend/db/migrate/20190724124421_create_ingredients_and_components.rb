@@ -44,7 +44,7 @@ class CreateIngredientsAndComponents < ActiveRecord::Migration[5.2]
       t.float :chromium
       t.float :molybdenum
       t.float :chloride
-      
+
       t.timestamps
     end
 
@@ -53,7 +53,6 @@ class CreateIngredientsAndComponents < ActiveRecord::Migration[5.2]
       t.belongs_to :recipe, intex: true
       t.integer :type
       t.float :quantity
-
     end
   end
 end
