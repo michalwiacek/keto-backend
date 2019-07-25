@@ -1,0 +1,21 @@
+# See more options at https://github.com/janko/image_processing/blob/master/doc/vips.md#readme
+
+thumb:
+  convert: jpg
+  resize_to_fill: [64, 64]
+
+small:
+  convert: jpg
+  resize_to_fill: [128, 128]
+
+medium:
+  convert: jpg
+  resize_to_fill: [200, 200]
+
+large:  
+  convert: jpg
+  resize_to_fill: [400, 400]
+
+very_large:
+  convert: jpg
+  resize_to_fill: [700, 700]
