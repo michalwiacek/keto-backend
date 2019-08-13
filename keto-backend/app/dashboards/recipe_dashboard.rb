@@ -69,7 +69,7 @@ class RecipeDashboard < Administrate::BaseDashboard
     :recipe_image,
     :body_markdown,
     :cooking_time,
-    :difficulty
+    :difficulty,
     :archived,
     :published,
     :published_at,
