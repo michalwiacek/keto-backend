@@ -28,9 +28,6 @@ default: &default
 development:
   <<: *default
   database: keto-backend_development
-  # host: 0.0.0.0
-  # username: michal
-  # password: michal
   host: localhost
 
   # The specified database role being used to connect to postgres.
