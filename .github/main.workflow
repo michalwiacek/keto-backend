@@ -1,6 +1,6 @@
 workflow "Test and deploy to heroku" {
-  on = "push"
   resolves = ["msteams.notifier"]
+  on = "push"
 }
 
 action "ruby.build" {
@@ -83,4 +83,13 @@ action "msteams.notifier" {
   needs = ["heroku.deploy"]
   args = "Deployed!"
   secrets = ["TEAMS_WEBHOOK_URL"]
+}
+
+workflow "New workflow" {
+  on = "fork"
+  resolves = ["GitHub Action for Slack"]
+}
+
+action "GitHub Action for Slack" {
+  uses = "Ilshidur/action-slack@d9d86c087401690141f31f4d8832f23a89433f6c"
 }
