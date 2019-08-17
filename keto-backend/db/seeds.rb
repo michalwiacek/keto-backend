@@ -6,11 +6,18 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+admin_password = SecureRandom.hex(9)
+admin_email = 'andrzej@nekosoft.pl'
+
 admin = {
-  email: 'andrzej@nekosoft.pl',
+  email: admin_email,
   first_name: 'Andrzej',
   last_name: 'Bond',
-  password: '9618a91baddfeb5f',
+  password: admin_password,
   admin: true
 }
-User.create!(admin)
+
+a = User.create!(admin)
+a.add_role :admin
+
+p "created admin with email: #{admin_email}, password: #{admin_password}"

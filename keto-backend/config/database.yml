@@ -18,16 +18,19 @@ default: &default
   adapter: postgresql
   encoding: unicode
   host: db
-  username: postgres
+  username: michal
+  password: michal
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  port: 5433
+  port: 5432
 
 development:
   <<: *default
   database: keto-backend_development
   # host: 0.0.0.0
+  # username: michal
+  # password: michal
   host: localhost
 
   # The specified database role being used to connect to postgres.
