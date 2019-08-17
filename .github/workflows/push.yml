@@ -9,7 +9,7 @@ jobs:
     - name: ruby.build
       uses: actions/docker/cli@master
       with:
-        args: build -f Dockerfile.test -t ci-${{ github.sha }}:latest .
+        args: build -f Dockerfile -t ci-${{ github.sha }}:latest .
     - name: ruby.rspec
       uses: actions/docker/cli@master
       with:
