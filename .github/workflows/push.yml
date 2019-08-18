@@ -10,10 +10,10 @@ jobs:
       uses: actions/docker/cli@master
       with:
         args: build -f Dockerfile -t ci-${{ github.sha }}:latest .
-    - name: ruby.rspec
-      uses: actions/docker/cli@master
-      with:
-        args: run ci-${{ github.sha }}:latest rspec
+#     - name: ruby.rspec
+#       uses: actions/docker/cli@master
+#       with:
+#         args: run ci-${{ github.sha }}:latest rspec
     - name: ruby.rubocop
       uses: actions/docker/cli@master
       with:
@@ -33,7 +33,7 @@ jobs:
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         HEROKU_APP: ${{ secrets.HEROKU_APP }}
-        RACK_ENV: production
+        RAILS_ENV: production
       with:
         args: container:push web
     - name: heroku.envs
@@ -42,7 +42,7 @@ jobs:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         HEROKU_APP: ${{ secrets.HEROKU_APP }}
         MY_SECRET: ${{ secrets.MY_SECRET }}
-        RACK_ENV: production
+        RAILS_ENV: production
       with:
         args: config:set RACK_ENV=$RACK_ENV MY_SECRET=$MY_SECRET
     - name: heroku.deploy
@@ -51,7 +51,7 @@ jobs:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         HEROKU_APP: ${{ secrets.HEROKU_APP }}
         MY_SECRET: ${{ secrets.MY_SECRET }}
-        RACK_ENV: production
+        RAILS_ENV: production
       with:
         args: container:release web
     - name: msteams.notifier
