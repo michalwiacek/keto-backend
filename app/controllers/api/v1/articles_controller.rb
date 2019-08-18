@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::V1::ArticlesController < Api::V1::ApplicationController
   expose :articles, -> { Article.all }
   expose :article

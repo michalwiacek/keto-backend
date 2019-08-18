@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tag < ActsAsTaggableOn::Tag
   # acts_as_followable #todo
 

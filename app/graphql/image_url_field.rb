@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ImageUrlField < GraphQL::Schema::FieldExtension
   attr_reader :attachment_assoc
 
@@ -23,7 +25,7 @@ class ImageUrlField < GraphQL::Schema::FieldExtension
 
   # This method resolves (as it states) the field itself
   # (it's the same as defining a method within a type)
-  def resolve(object:, arguments:, **rest)
+  def resolve(object:, **_rest)
     AssociationLoader.for(
       object.object.class,
       # that's where we use our association name
@@ -33,7 +35,7 @@ class ImageUrlField < GraphQL::Schema::FieldExtension
 
   # This method is called if the result of the `resolve`
   # is a lazy value (e.g., a Promise – like in our case)
-  def after_resolve(value:, arguments:, object:, **rest)
+  def after_resolve(value:, **_rest)
     return if value.nil?
 
     # variant = arguments.fetch(:variant, :medium)

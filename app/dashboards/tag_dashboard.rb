@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "administrate/base_dashboard"
 class TagDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES

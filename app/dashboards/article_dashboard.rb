@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "administrate/base_dashboard"
 
 class ArticleDashboard < Administrate::BaseDashboard
@@ -12,17 +14,17 @@ class ArticleDashboard < Administrate::BaseDashboard
     id: Field::Number,
     tags: Field::ActsAsTaggable,
     description: Field::String,
-    article_images: Field::ActiveStorage.with_options({
-                                                        direct_upload: true,
-                                                        # url_only: true,
-                                                        show_in_index: true,
-                                                        show_preview_size: '150x200'
-                                                      }),
-    main_image: Field::ActiveStorage.with_options({
-                                                    direct_upload: true,
-                                                    show_in_index: true,
-                                                    show_preview_size: '150x200'
-                                                  }),
+    article_images: Field::ActiveStorage.with_options(
+      direct_upload: true,
+      # url_only: true,
+      show_in_index: true,
+      show_preview_size: '150x200'
+    ),
+    main_image: Field::ActiveStorage.with_options(
+      direct_upload: true,
+      show_in_index: true,
+      show_preview_size: '150x200'
+    ),
     main_image_background_hex_color: Field::String,
     title: Field::String,
     body_html: Field::Trix,
@@ -136,6 +138,6 @@ class ArticleDashboard < Administrate::BaseDashboard
   end
 
   def permitted_attributes
-    super + [:article_images => []]
+    super + [article_images: []]
   end
 end

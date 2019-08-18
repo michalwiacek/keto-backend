@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Ingredient < ApplicationRecord
   has_one_attached :main_image
 

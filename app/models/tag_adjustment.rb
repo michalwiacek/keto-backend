@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TagAdjustment < ApplicationRecord
   validates :user_id, presence: true
   validates :article_id, presence: true

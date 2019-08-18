@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateIngredientsAndComponents < ActiveRecord::Migration[5.2]
   def change
     create_table :ingredients do |t|
@@ -53,6 +55,8 @@ class CreateIngredientsAndComponents < ActiveRecord::Migration[5.2]
       t.belongs_to :recipe, intex: true
       t.integer :type
       t.float :quantity
+
+      t.timestamps
     end
   end
 end

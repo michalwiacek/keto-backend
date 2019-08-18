@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "administrate/base_dashboard"
 module ActsAsTaggableOn
   class TaggingDashboard < Administrate::BaseDashboard

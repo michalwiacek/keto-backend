@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "administrate/base_dashboard"
 
 class RecipeDashboard < Administrate::BaseDashboard
@@ -13,16 +15,16 @@ class RecipeDashboard < Administrate::BaseDashboard
     steps: Field::HasMany,
     id: Field::Number,
     tags: Field::ActsAsTaggable,
-    recipe_images: Field::ActiveStorage.with_options({
+    recipe_images: Field::ActiveStorage.with_options(
       direct_upload: true,
       show_in_index: true,
       show_preview_size: '150x200'
-    }),
-    main_image: Field::ActiveStorage.with_options({
+    ),
+    main_image: Field::ActiveStorage.with_options(
       direct_upload: true,
       show_in_index: true,
       show_preview_size: '150x200'
-    }),
+    ),
     name: Field::String,
     description: Field::Text,
     body_markdown: Field::SimpleMarkdown,
@@ -119,12 +121,12 @@ class RecipeDashboard < Administrate::BaseDashboard
 
   # Overwrite this method to customize how recipes are displayed
   # across all pages of the admin dashboard.
-  
+
   def display_resource(recipe)
     "Recipe ##{recipe.id} - #{recipe.name}"
   end
 
   def permitted_attributes
-    super + [:recipe_images => []]
+    super + [recipe_images: []]
   end
 end

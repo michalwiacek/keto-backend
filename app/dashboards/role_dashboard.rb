@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "administrate/base_dashboard"
 
 class RoleDashboard < Administrate::BaseDashboard
@@ -52,6 +54,6 @@ class RoleDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(role)
-    "#{role.name}"
+    role.name.to_s
   end
 end

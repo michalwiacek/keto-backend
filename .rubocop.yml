@@ -9,11 +9,13 @@ AllCops:
   ExtraDetails: true
   Exclude:
     - db/schema.rb
+    - db/migrate/*
     - spec/**/*
     - config/**/*
     - bin/*
     - tmp/**/*
     - vendor/**/*
+    - lib/*
 
 # Rails
 

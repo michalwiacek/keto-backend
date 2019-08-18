@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 module Types
   class QueryType < Types::BaseObject
     field :articles, [Types::ArticleType], null: false
 
     def articles
-      Article.published.where('published_at <= ?', DateTime.now)
+      Article.published.where('published_at <= ?', DateTime.zone.now)
     end
 
     field :recipes, [Types::RecipeType], null: false
 
     def recipes
-      Recipe.published.where('published_at <= ?', DateTime.now)
+      Recipe.published.where('published_at <= ?', DateTime.zone.now)
     end
 
     field :article, Types::ArticleType, null: false do

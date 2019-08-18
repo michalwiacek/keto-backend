@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # See https://github.com/Shopify/graphql-batch/blob/master/examples/association_loader.rb
 #
 # Additionally added support for scopes.
@@ -40,9 +42,9 @@ class AssociationLoader < ::GraphQL::Batch::Loader
   private
 
   def validate
-    unless @model.reflect_on_association(@association_name)
-      raise ArgumentError, "No association #{@association_name} on #{@model}"
-    end
+    return if @model.reflect_on_association(@association_name)
+
+    raise ArgumentError, "No association #{@association_name} on #{@model}"
   end
 
   def preload_association(records)

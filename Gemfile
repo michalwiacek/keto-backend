@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -19,17 +21,17 @@ gem 'administrate-field-nested_has_many'
 gem 'administrate-field-simple_markdown', '~> 0.1.2'
 gem 'administrate-field-trix'
 gem 'carrierwave', '~> 1.0'
-gem 'promise.rb'
 gem 'devise'
 gem 'devise-jwt'
 gem 'fast_jsonapi'
-gem 'rack-cors'
-gem 'rolify'
-gem 'mini_magick'
-gem 'trix-rails', require: 'trix'
 gem "graphql"
 gem 'graphql-batch'
 gem 'image_processing', '~> 1.2'
+gem 'mini_magick'
+gem 'promise.rb'
+gem 'rack-cors'
+gem 'rolify'
+gem 'trix-rails', require: 'trix'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

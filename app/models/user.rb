@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   rolify
 
@@ -15,7 +17,7 @@ class User < ApplicationRecord
   validates :roles, presence: true
 
   def set_default_role
-    self.add_role(:normal)
+    add_role(:normal)
   end
 
   def name

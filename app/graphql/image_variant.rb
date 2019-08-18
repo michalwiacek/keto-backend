@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ImageVariant < GraphQL::Schema::Enum
   description <<~DESC
     Image variant generated with libvips via the image_processing gem.
