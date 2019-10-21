@@ -14,7 +14,7 @@ gem 'turbolinks'
 
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'administrate'
-gem 'administrate-field-active_storage'
+gem 'administrate-field-active_storage', '~> 0.1.8'
 gem 'administrate-field-acts_as_taggable'
 gem 'administrate-field-image', '~> 1.1'
 gem 'administrate-field-nested_has_many'

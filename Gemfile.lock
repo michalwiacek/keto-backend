@@ -362,7 +362,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on (~> 6.0)
   administrate
-  administrate-field-active_storage
+  administrate-field-active_storage (~> 0.1.8)
   administrate-field-acts_as_taggable
   administrate-field-image (~> 1.1)
   administrate-field-nested_has_many
@@ -413,4 +413,4 @@ RUBY VERSION
    ruby 2.6.3p62
 
 BUNDLED WITH
-   1.17.2
+   1.17.3

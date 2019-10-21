@@ -5,13 +5,13 @@ module Types
     field :articles, [Types::ArticleType], null: false
 
     def articles
-      Article.published.where('published_at <= ?', DateTime.zone.now)
+      Article.published.where('published_at <= ?', DateTime.current)
     end
 
     field :recipes, [Types::RecipeType], null: false
 
     def recipes
-      Recipe.published.where('published_at <= ?', DateTime.zone.now)
+      Recipe.published.where('published_at <= ?', DateTime.current)
     end
 
     field :article, Types::ArticleType, null: false do
