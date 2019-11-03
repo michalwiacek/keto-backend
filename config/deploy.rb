@@ -40,3 +40,37 @@ set :keep_releases, 5
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
+namespace :rails do
+  desc "Open the rails console on primary app server"
+  task :console do
+    on roles(:app), primary: true do
+      rails_env = fetch(:stage)
+      execute_interactively "#{bundle_cmd} #{current_path}/script/rails console #{rails_env}"
+    end
+  end
+
+  desc "Open the rails dbconsole on primary db server"
+  task :dbconsole do
+    on roles(:db), primary: true do
+      rails_env = fetch(:stage)
+      execute_interactively "#{bundle_cmd} #{current_path}/script/rails dbconsole #{rails_env}"
+    end
+  end
+
+  def execute_interactively(command)
+    user = fetch(:user)
+    port = fetch(:port) || 22
+    cmd = "ssh -l #{user} #{host} -p #{port} -t 'cd #{deploy_to}/current && #{command}'"
+    info "Connecting to #{host}"
+    exec cmd
+  end
+
+  def bundle_cmd
+    if fetch(:rbenv_ruby)
+      # FIXME: Is there a better way to do this? How does "execute :bundle" work?
+      "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{File.join(fetch(:rbenv_path), '/bin/rbenv')} exec bundle exec"
+    else
+      "ruby "
+    end
+  end
+end
