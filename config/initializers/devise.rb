@@ -8,7 +8,8 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'e38230f0b3d796829b157df88f0678e5e7e08f620697d3c9f094e423885671093e33723101086eb66d08c08077a96a037c2667400260ca5f12c716b22146225c'
+  # config.secret_key = '17279b420c5f43633cc6058dda5654d07f5d350f93cd158b83702da95be7450a36f85fd5fe9409ada915ff84615543f8b8ac3e075d71c3178fb4a66f327d6901'
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -113,8 +114,8 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  config.pepper = ENV['DEVISE_PEPPER']
-
+  # config.pepper = 'c2acd246ca41341665231ded3f955bd01e746320c5e5c78aa7b018fbe58c0284bf205212e983f7c9c49e2701236c26a813471a12f527a725a6acbfbdc4823886'
+  config.pepper = Rails.application.credentials.dig(:devise, :pepper)
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
 
@@ -130,7 +131,7 @@ Devise.setup do |config|
   # without confirming their account.
   # Default is 0.days, meaning the user cannot access the website without
   # confirming their account.
-  config.allow_unconfirmed_access_for = 2.days
+  # config.allow_unconfirmed_access_for = 2.days
 
   # A period that the user is allowed to confirm their account before their
   # token becomes invalid. For example, if set to 3.days, the user can confirm
@@ -138,13 +139,13 @@ Devise.setup do |config|
   # their account can't be confirmed with the token any more.
   # Default is nil, meaning there is no restriction on how long a user can take
   # before confirming their account.
-  config.confirm_within = 3.days
+  # config.confirm_within = 3.days
 
   # If true, requires any email changes to be confirmed (exactly the same way as
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
   # db field (see migrations). Until confirmed, new email is stored in
   # unconfirmed_email column, and copied to email column on successful confirmation.
-  config.reconfirmable = false
+  config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
   # config.confirmation_keys = [:email]
@@ -297,7 +298,7 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 
   config.jwt do |jwt|
-    jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
+    jwt.secret = ENV['DEVISE_JWT_SECRET_KEY'] || Rails.application.credentials.dig(:devise, :jwt_secret_key)
     jwt.dispatch_requests = [
       ['POST', %r{^/users/sign_in$}],
       ['GET', %r{^/$}]

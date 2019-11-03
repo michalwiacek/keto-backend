@@ -51,7 +51,6 @@ group :development, :test do
   gem 'rubocop', '~> 0.71.0', require: false # Automatic Ruby code style checking tool. Aims to enforce the community-driven Ruby Style Guide.
   gem 'rubocop-rails'
   gem 'shoulda-matchers', '4.0.0.rc1' # Making tests easy on the fingers and eyes
-  gem 'web-console', '>= 3.3.0' # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
 end
 
 group :development do
@@ -59,6 +58,7 @@ group :development do
   gem "graphiql-rails"
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'ordinare', '~> 0.4.0' # Ordinare sorts gems in your Gemfile alphabetically
+  gem 'web-console', '>= 3.3.0' # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
 end
 
 group :test do
