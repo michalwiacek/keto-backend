@@ -36,6 +36,7 @@ gem 'promise.rb'
 gem 'rack-cors'
 gem 'rolify'
 gem 'trix-rails', require: 'trix'
+gem 'web-console', '>= 3.3.0' # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -58,7 +59,6 @@ group :development do
   gem "graphiql-rails"
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'ordinare', '~> 0.4.0' # Ordinare sorts gems in your Gemfile alphabetically
-  gem 'web-console', '>= 3.3.0' # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
 end
 
 group :test do

@@ -44,7 +44,7 @@ namespace :rails do
   desc "Open the rails console on primary app server"
   task :console do
     on roles(:app), primary: true do
-      rails_env = fetch(:stage)
+      rails_env = fetch(:production)
       execute_interactively "#{bundle_cmd} #{current_path}/script/rails console #{rails_env}"
     end
   end
@@ -52,7 +52,7 @@ namespace :rails do
   desc "Open the rails dbconsole on primary db server"
   task :dbconsole do
     on roles(:db), primary: true do
-      rails_env = fetch(:stage)
+      rails_env = fetch(:production)
       execute_interactively "#{bundle_cmd} #{current_path}/script/rails dbconsole #{rails_env}"
     end
   end
@@ -71,6 +71,7 @@ namespace :rails do
       "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{File.join(fetch(:rbenv_path), '/bin/rbenv')} exec bundle exec"
     else
       "ruby "
-    end
+    endstage
   end
+end
 end
