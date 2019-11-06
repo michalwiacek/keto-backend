@@ -22,6 +22,14 @@ module Types
       argument :id, ID, required: true
     end
 
+    field :user, Types::UserType, null: false do
+      argument :id, ID, required: true
+    end
+
+    def user(id:)
+      User.find(id)
+    end
+
     def article(id:)
       Article.find(id)
     end
