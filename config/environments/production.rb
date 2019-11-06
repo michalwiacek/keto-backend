@@ -14,6 +14,7 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
   config.action_mailer.default_url_options = { :host => ENV['MAILER_HOST'] }
+  config.default_url_options = { :host => ENV['HOST'] }
 
   config.action_mailer.smtp_settings = {
     :address        => "smtp.sendgrid.net",
