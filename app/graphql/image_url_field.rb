@@ -40,7 +40,7 @@ class ImageUrlField < GraphQL::Schema::FieldExtension
 
     # variant = arguments.fetch(:variant, :medium)
     # value = value.variant(variant) if variant
-    value = value.variant(resize: "300x300")
+    value = value.variant(resize: "600x600")
 
     Rails.application.routes.url_helpers.url_for(value)
   end

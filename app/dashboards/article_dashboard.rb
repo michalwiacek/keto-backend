@@ -16,9 +16,9 @@ class ArticleDashboard < Administrate::BaseDashboard
     description: Field::String,
     article_images: Field::ActiveStorage.with_options(
       direct_upload: true,
-      # url_only: true,
+      url_only: true,
       show_in_index: true,
-      show_preview_size: '150x200'
+      # show_preview_size: '150x200'
     ),
     main_image: Field::ActiveStorage.with_options(
       direct_upload: true,
@@ -56,6 +56,7 @@ class ArticleDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
+    id
     user
     main_image
     tags
@@ -76,7 +77,7 @@ class ArticleDashboard < Administrate::BaseDashboard
     :main_image,
     :main_image_background_hex_color,
     :title,
-    :body_html,
+    # :body_html,
     :body_markdown,
     :language,
     :hotness_score,
@@ -104,29 +105,29 @@ class ArticleDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :user,
+    :published,
+    :featured,
     :tags,
     :description,
     :article_images,
     :main_image,
     :main_image_background_hex_color,
     :title,
-    :body_html,
+    # :body_html,
     :body_markdown,
-    :language,
-    :hotness_score,
-    :organic_page_views_count,
-    :organic_page_views_past_month_count,
-    :organic_page_views_past_week_count,
-    :password,
-    :path,
+    # :language,
+    # :hotness_score,
+    # :organic_page_views_count,
+    # :organic_page_views_past_month_count,
+    # :organic_page_views_past_week_count,
+    # :password,
+    # :path,
     :archived,
-    :published,
     :published_at,
     :reading_time,
     :show_comments,
     :canonical_url,
     :ids_for_suggested_articles,
-    :featured,
     :slug,
   ].freeze
 
