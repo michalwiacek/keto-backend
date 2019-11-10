@@ -16,6 +16,11 @@ module Types
 
     field :recipes, [Types::RecipeType], null: false
 
+    field :ingredients, [Types::IngredientType], null: false
+    def ingredients
+      Ingredient.all.limit(15)
+    end
+
     def recipes
       Recipe.published.where('published_at <= ?', DateTime.current).limit(10)
     end
@@ -30,6 +35,14 @@ module Types
 
     field :user, Types::UserType, null: false do
       argument :id, ID, required: true
+    end
+
+    field :ingredient, Types::IngredientType, null: false do
+      argument :id, ID, required: true
+    end
+
+    def ingredient(id:)
+      Ingredient.find(id)
     end
 
     def user(id:)
