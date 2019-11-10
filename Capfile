@@ -42,3 +42,17 @@ install_plugin Capistrano::SCM::Git
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
+
+namespace :deploy do
+  after :generate_graphdoc do
+    within release_path do
+      # Generate schema.json from MyApplicationSchema
+      execute :rake, 'graphdoc:dump_schema'
+
+      # Generate html with graphdoc from schema.json
+      execute :rake, 'graphdoc:generate'
+    end
+  end
+
+  after :publishing, :generate_graphdoc
+end

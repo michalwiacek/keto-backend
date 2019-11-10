@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'users/current', to: 'sessions#show'
   end
-
+  
   namespace :admin do
+    mount GraphdocRuby::Application, at: 'graphdoc'
     resources :users, only: %i(index show new create edit update destroy)
     resources :articles, only: %i(index show new create edit update destroy)
     resources :recipes, only: %i(index show new create edit update destroy)
