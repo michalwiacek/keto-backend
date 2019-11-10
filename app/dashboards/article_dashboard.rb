@@ -27,7 +27,6 @@ class ArticleDashboard < Administrate::BaseDashboard
     ),
     main_image_background_hex_color: Field::String,
     title: Field::String,
-    body_html: Field::Trix,
     body_markdown: Field::SimpleMarkdown,
     language: Field::String,
     hotness_score: Field::Number,

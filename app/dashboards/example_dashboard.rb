@@ -15,7 +15,6 @@ class ExampleDashboard < Administrate::BaseDashboard
     colour: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    bar: Field::Trix
   }.freeze
 
   # COLLECTION_ATTRIBUTES
