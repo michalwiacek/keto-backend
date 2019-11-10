@@ -2,16 +2,22 @@
 
 module Types
   class QueryType < Types::BaseObject
-    field :articles, [Types::ArticleType], null: false
+    field :articles, [Types::ArticleType], null: false do
+      argument :tags, [String], required: false
+    end
 
-    def articles
-      Article.published.where('published_at <= ?', DateTime.current)
+    def articles(**args)
+      if args[:tags]
+        Article.published.where('published_at <= ?', DateTime.current).tagged_with(args[:tags]).limit(10).preload(:user)
+      else
+        Article.published.where('published_at <= ?', DateTime.current).limit(10).preload(:user)
+      end
     end
 
     field :recipes, [Types::RecipeType], null: false
 
     def recipes
-      Recipe.published.where('published_at <= ?', DateTime.current)
+      Recipe.published.where('published_at <= ?', DateTime.current).limit(10)
     end
 
     field :article, Types::ArticleType, null: false do
