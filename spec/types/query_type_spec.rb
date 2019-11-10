@@ -18,7 +18,7 @@ RSpec.describe Types::QueryType do
 
     it "returns all articles" do
       expect(result.dig("data", "articles")).to match_array(
-        articles.map { |article| {"title" == article.title }}
+        articles.map { |article| ( "title" == article.title ) }
       )
     end
   end
