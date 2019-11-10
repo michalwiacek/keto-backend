@@ -71,7 +71,6 @@ namespace :rails do
       "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{File.join(fetch(:rbenv_path), '/bin/rbenv')} exec bundle exec"
     else
       "ruby "
-    endstage
+    end
   end
-end
 end
