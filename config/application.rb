@@ -35,5 +35,9 @@ module KetoBackend
 
     config.autoload_paths << Rails.root.join('lib')
     config.eager_load_paths << Rails.root.join('lib')
+    config.filter_parameters << :password
+  end
+  Raven.configure do |config|
+    config.dsn = ENV['SENTRY_DSN']
   end
 end
