@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "administrate/base_dashboard"
+require 'administrate/base_dashboard'
 
 class IngredientDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -56,7 +56,7 @@ class IngredientDashboard < Administrate::BaseDashboard
     molybdenum: Field::Number.with_options(decimals: 2),
     chloride: Field::Number.with_options(decimals: 2),
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -64,113 +64,104 @@ class IngredientDashboard < Administrate::BaseDashboard
   #
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
-  COLLECTION_ATTRIBUTES = [
-    # :components,
-    # :recipes,
-    :id,
-    :name,
-  ].freeze
+  COLLECTION_ATTRIBUTES = %i[id name].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
-  SHOW_PAGE_ATTRIBUTES = [
-    # :components,
-    # :recipes,
-    :id,
-    :name,
-    :calories,
-    :total_fat,
-    :saturated_fat,
-    :trans_fat,
-    :polyunsaturated_fat,
-    :monounsaturated_fat,
-    :cholesterol,
-    :sodium,
-    :total_carbohydrates,
-    :dietary_fiber,
-    :sugars,
-    :added_sugars,
-    :sugar_alcohol,
-    :protein,
-    :calcium,
-    :iron,
-    :vitamin_d,
-    :potassium,
-    :vitamin_a,
-    :vitamin_c,
-    :vitamin_e,
-    :vitamin_k,
-    :vitamin_b6,
-    :vitamin_b12,
-    :thiamin,
-    :riboflavin,
-    :niacin,
-    :folate,
-    :folic_acid,
-    :biotin,
-    :pantethenic_acid,
-    :phosphorus,
-    :iodine,
-    :magnesium,
-    :zinc,
-    :selenium,
-    :copper,
-    :manganese,
-    :chromium,
-    :molybdenum,
-    :chloride,
-    :created_at,
-    :updated_at,
+  SHOW_PAGE_ATTRIBUTES = %i[
+    id
+    name
+    calories
+    total_fat
+    saturated_fat
+    trans_fat
+    polyunsaturated_fat
+    monounsaturated_fat
+    cholesterol
+    sodium
+    total_carbohydrates
+    dietary_fiber
+    sugars
+    added_sugars
+    sugar_alcohol
+    protein
+    calcium
+    iron
+    vitamin_d
+    potassium
+    vitamin_a
+    vitamin_c
+    vitamin_e
+    vitamin_k
+    vitamin_b6
+    vitamin_b12
+    thiamin
+    riboflavin
+    niacin
+    folate
+    folic_acid
+    biotin
+    pantethenic_acid
+    phosphorus
+    iodine
+    magnesium
+    zinc
+    selenium
+    copper
+    manganese
+    chromium
+    molybdenum
+    chloride
+    created_at
+    updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = [
-    # :components,
-    # :recipes,
-    :name,
-    :calories,
-    :total_fat,
-    :saturated_fat,
-    :trans_fat,
-    :polyunsaturated_fat,
-    :monounsaturated_fat,
-    :cholesterol,
-    :sodium,
-    :total_carbohydrates,
-    :dietary_fiber,
-    :sugars,
-    :added_sugars,
-    :sugar_alcohol,
-    :protein,
-    :calcium,
-    :iron,
-    :vitamin_d,
-    :potassium,
-    :vitamin_a,
-    :vitamin_c,
-    :vitamin_e,
-    :vitamin_k,
-    :vitamin_b6,
-    :vitamin_b12,
-    :thiamin,
-    :riboflavin,
-    :niacin,
-    :folate,
-    :folic_acid,
-    :biotin,
-    :pantethenic_acid,
-    :phosphorus,
-    :iodine,
-    :magnesium,
-    :zinc,
-    :selenium,
-    :copper,
-    :manganese,
-    :chromium,
-    :molybdenum,
-    :chloride,
+  FORM_ATTRIBUTES = %i[
+    name
+    calories
+    total_fat
+    saturated_fat
+    trans_fat
+    polyunsaturated_fat
+    monounsaturated_fat
+    cholesterol
+    sodium
+    total_carbohydrates
+    dietary_fiber
+    sugars
+    added_sugars
+    sugar_alcohol
+    protein
+    calcium
+    iron
+    vitamin_d
+    potassium
+    vitamin_a
+    vitamin_c
+    vitamin_e
+    vitamin_k
+    vitamin_b6
+    vitamin_b12
+    thiamin
+    riboflavin
+    niacin
+    folate
+    folic_acid
+    biotin
+    pantethenic_acid
+    phosphorus
+    iodine
+    magnesium
+    zinc
+    selenium
+    copper
+    manganese
+    chromium
+    molybdenum
+    chloride
   ].freeze
 
   # Overwrite this method to customize how ingredients are displayed

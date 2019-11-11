@@ -236,6 +236,7 @@ GEM
     parser (2.6.3.0)
       ast (~> 2.4.0)
     pg (1.1.4)
+    prettier (0.15.1)
     promise.rb (0.7.4)
     pry (0.12.2)
       coderay (~> 1.1.0)
@@ -421,6 +422,7 @@ DEPENDENCIES
   mini_magick
   ordinare (~> 0.4.0)
   pg (>= 0.18, < 2.0)
+  prettier
   promise.rb
   pry (~> 0.12.2)
   pry-byebug (~> 3.7)

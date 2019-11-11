@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :step do
-    description { "MyText" }
+    description { 'MyText' }
   end
 end

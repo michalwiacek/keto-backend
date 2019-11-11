@@ -9,11 +9,21 @@ class User < ApplicationRecord
 
   has_many :articles, dependent: :destroy
 
-  devise :database_authenticatable, :registerable, :lockable,
-         :recoverable, :rememberable, :validatable, :trackable, :confirmable,
-         :jwt_authenticatable, jwt_revocation_strategy: JwtBlacklist
+  devise :database_authenticatable,
+         :registerable,
+         :lockable,
+         :recoverable,
+         :rememberable,
+         :validatable,
+         :trackable,
+         :confirmable,
+         :jwt_authenticatable,
+         jwt_revocation_strategy: JwtBlacklist
 
-  validates :email, presence: true, uniqueness: true, format: { with: Devise.email_regexp }
+  validates :email,
+            presence: true,
+            uniqueness: true,
+            format: { with: Devise.email_regexp }
   validates :roles, presence: true
 
   def set_default_role

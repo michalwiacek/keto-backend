@@ -15,16 +15,12 @@ module Types
     field :user, Types::UserType, null: false
 
     def recipe_images_urls
-      AssociationLoader.for(
-        object.class,
-        recipe_images_attachments: :blob
-      ).load(object).then do |recipe_images|
-        recipe_images.map { |image|
-          Rails
-            .application
-            .routes
-            .url_helpers.rails_blob_url(image)
-        }
+      AssociationLoader.for(object.class, recipe_images_attachments: :blob)
+        .load(object)
+        .then do |recipe_images|
+        recipe_images.map do |image|
+          Rails.application.routes.url_helpers.rails_blob_url(image)
+        end
       end
     end
   end

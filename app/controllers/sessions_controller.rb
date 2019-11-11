@@ -7,12 +7,8 @@ class SessionsController < Devise::SessionsController
 
   def create
     respond_to do |format|
-      format.html do
-        super
-      end
-      format.json do
-        super { @token = current_token }
-      end
+      format.html { super }
+      format.json { super { @token = current_token } }
     end
   end
 

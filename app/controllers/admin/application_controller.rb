@@ -12,7 +12,9 @@ module Admin
     before_action :authenticate_admin
 
     def authenticate_admin
-      redirect_to root_path, alert: "Not authorized." unless current_user.has_role?(:admin)
+      unless current_user.has_role?(:admin)
+        redirect_to root_path, alert: 'Not authorized.'
+      end
     end
 
     # Override this value to specify the number of elements to display at a time

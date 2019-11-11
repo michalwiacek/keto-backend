@@ -70,3 +70,4 @@ gem 'decent_exposure', '~> 3.0', '>= 3.0.2' # Way to encapsulate shared emthods 
 gem 'inherited_resources' # Easy CRUD
 gem 'pundit', '~> 2.0' # Object oriented authorization for Rails applications
 gem 'sentry-raven' # A gem that provides a client interface for the Sentry error logger
+gem 'prettier'

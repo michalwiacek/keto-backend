@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "administrate/base_dashboard"
+require 'administrate/base_dashboard'
 
 class ArticleDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -14,17 +14,11 @@ class ArticleDashboard < Administrate::BaseDashboard
     id: Field::Number,
     tags: Field::ActsAsTaggable,
     description: Field::String,
-    article_images: Field::ActiveStorage.with_options(
-      direct_upload: true,
-      url_only: true,
-      show_in_index: true,
-      # show_preview_size: '150x200'
-    ),
-    main_image: Field::ActiveStorage.with_options(
-      direct_upload: true,
-      show_in_index: true,
-      show_preview_size: '150x200'
-    ),
+    article_images: Field::ActiveStorage.with_options(),
+    main_image:
+      Field::ActiveStorage.with_options(
+        direct_upload: true, show_in_index: true, show_preview_size: '150x200'
+      ),
     main_image_background_hex_color: Field::String,
     title: Field::String,
     body_markdown: Field::SimpleMarkdown,
@@ -46,7 +40,7 @@ class ArticleDashboard < Administrate::BaseDashboard
     featured: Field::Boolean,
     slug: Field::Text,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -67,67 +61,58 @@ class ArticleDashboard < Administrate::BaseDashboard
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
-  SHOW_PAGE_ATTRIBUTES = [
-    :user,
-    :id,
-    :tags,
-    :description,
-    :article_images,
-    :main_image,
-    :main_image_background_hex_color,
-    :title,
-    # :body_html,
-    :body_markdown,
-    :language,
-    :hotness_score,
-    :edited_at,
-    :organic_page_views_count,
-    :organic_page_views_past_month_count,
-    :organic_page_views_past_week_count,
-    :password,
-    :path,
-    :archived,
-    :published,
-    :published_at,
-    :reading_time,
-    :show_comments,
-    :canonical_url,
-    :ids_for_suggested_articles,
-    :featured,
-    :slug,
-    :created_at,
-    :updated_at,
+  SHOW_PAGE_ATTRIBUTES = %i[
+    user
+    id
+    tags
+    description
+    article_images
+    main_image
+    main_image_background_hex_color
+    title
+    body_markdown
+    language
+    hotness_score
+    edited_at
+    organic_page_views_count
+    organic_page_views_past_month_count
+    organic_page_views_past_week_count
+    password
+    path
+    archived
+    published
+    published_at
+    reading_time
+    show_comments
+    canonical_url
+    ids_for_suggested_articles
+    featured
+    slug
+    created_at
+    updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = [
-    :user,
-    :published,
-    :featured,
-    :tags,
-    :description,
-    :article_images,
-    :main_image,
-    :main_image_background_hex_color,
-    :title,
-    # :body_html,
-    :body_markdown,
-    # :language,
-    # :hotness_score,
-    # :organic_page_views_count,
-    # :organic_page_views_past_month_count,
-    # :organic_page_views_past_week_count,
-    # :password,
-    # :path,
-    :archived,
-    :published_at,
-    :reading_time,
-    :show_comments,
-    :canonical_url,
-    :ids_for_suggested_articles,
-    :slug,
+  FORM_ATTRIBUTES = %i[
+    user
+    published
+    featured
+    tags
+    description
+    article_images
+    main_image
+    main_image_background_hex_color
+    title
+    body_markdown
+    archived
+    published_at
+    reading_time
+    show_comments
+    canonical_url
+    ids_for_suggested_articles
+    slug
   ].freeze
 
   # Overwrite this method to customize how articles are displayed

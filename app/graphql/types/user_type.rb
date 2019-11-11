@@ -16,10 +16,8 @@ module Types
     end
 
     def avatar_url
-      AssociationLoader.for(
-        object.class,
-        avatar_attachment: :blob
-      ).load(object).then do |avatar|
+      AssociationLoader.for(object.class, avatar_attachment: :blob).load(object)
+        .then do |avatar|
         Rails.application.routes.url_helpers.rails_blob_url(avatar)
       end
     end

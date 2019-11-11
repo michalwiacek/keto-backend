@@ -14,11 +14,15 @@ class Api::V1::ArticlesController < Api::V1::ApplicationController
   end
 
   def create
-    render_response(status: :ok, obj: ArticleSerializer.new(article)) if article.save!
+    if article.save!
+      render_response(status: :ok, obj: ArticleSerializer.new(article))
+    end
   end
 
   def update
-    render_response(status: :ok, obj: ArticleSerializer.new(article)) if article.update!(article_params)
+    if article.update!(article_params)
+      render_response(status: :ok, obj: ArticleSerializer.new(article))
+    end
   end
 
   def destroy

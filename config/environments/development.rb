@@ -1,6 +1,9 @@
 Rails.application.configure do
-
-  config.web_console.whitelisted_ips = ['10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16']
+  config.web_console.whitelisted_ips = %w[
+    10.0.0.0/8
+    172.16.0.0/12
+    192.168.0.0/16
+  ]
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -37,7 +40,7 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3_000 }
   Rails.application.routes.default_url_options[:host] = 'localhost:3000'
   config.action_mailer.perform_caching = false
 
@@ -49,7 +52,6 @@ Rails.application.configure do
 
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
-
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

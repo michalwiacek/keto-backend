@@ -15,15 +15,21 @@ class AssociationLoader < ::GraphQL::Batch::Loader
     @association_name = extract_association_id(association_schema)
 
     if scope_model && scopes
-      @preload_scope = scopes.reduce(scope_model) { |acc, scope| acc.public_send(scope) }
+      @preload_scope =
+        scopes.reduce(scope_model) { |acc, scope| acc.public_send(scope) }
     end
 
     validate
   end
 
   def load(record)
-    raise TypeError, "#{@model} loader can't load association for #{record.class}" unless record.is_a?(@model)
-    return Promise.resolve(read_association(record)) if association_loaded?(record)
+    unless record.is_a?(@model)
+      raise TypeError,
+            "#{@model} loader can't load association for #{record.class}"
+    end
+    if association_loaded?(record)
+      return Promise.resolve(read_association(record))
+    end
 
     super
   end
@@ -52,13 +58,19 @@ class AssociationLoader < ::GraphQL::Batch::Loader
       records,
       @association_schema,
       @preload_scope
-    ).then(&:first).then do |preloader|
+    )
+      .then(&:first)
+      .then do |preloader|
       next unless @preload_scope
 
       # this commit changes the way preloader works with scopes
       # https://github.com/rails/rails/commit/2847653869ffc1ff5139c46e520c72e26618c199#diff-3bba5f66eb1ed62bd5700872fcd6c632
       preloader.send(:owners).each do |owner|
-        preloader.send(:associate_records_to_owner, owner, preloader.records_by_owner[owner] || [])
+        preloader.send(
+          :associate_records_to_owner,
+          owner,
+          preloader.records_by_owner[owner] || []
+        )
       end
     end
   end
@@ -75,7 +87,10 @@ class AssociationLoader < ::GraphQL::Batch::Loader
     return id_or_hash unless id_or_hash.is_a?(Hash)
 
     if id_or_hash.keys.size != 1
-      raise ArgumentError, "You can only preload exactly one association! You passed: #{id_or_hash}"
+      raise ArgumentError,
+            "You can only preload exactly one association! You passed: #{
+              id_or_hash
+            }"
     end
 
     id_or_hash.keys.first

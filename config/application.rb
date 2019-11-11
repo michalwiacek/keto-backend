@@ -1,7 +1,7 @@
 require_relative 'boot'
 
-require "rails"
-require "rails/all"
+require 'rails'
+require 'rails/all'
 require 'graphql/batch'
 # Pick the frameworks you want:
 # require "active_model/railtie"
@@ -29,10 +29,11 @@ module KetoBackend
     config.middleware.use ActionDispatch::Flash
     config.session_store :cookie_store
     config.middleware.use ActionDispatch::Cookies
-    config.middleware.use ActionDispatch::Session::CookieStore, config.session_options
+    config.middleware.use ActionDispatch::Session::CookieStore,
+                          config.session_options
     config.middleware.use ::Rack::MethodOverride
 
-    config.autoload_paths << Rails.root.join("lib")
-    config.eager_load_paths << Rails.root.join("lib")
+    config.autoload_paths << Rails.root.join('lib')
+    config.eager_load_paths << Rails.root.join('lib')
   end
 end

@@ -6,27 +6,26 @@ class Api::V1::ApplicationController < ActionController::API
   respond_to :json
 
   rescue_from Pundit::NotAuthorizedError, with: :render_forbidden
-  rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+  rescue_from ActiveRecord::RecordInvalid,
+              with: :render_unprocessable_entity_response
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
   private
 
   def render_unprocessable_entity_response(exception)
     render_response(
-      message: "Validation Failed",
+      message: 'Validation Failed',
       errors: ValidationErrorsSerializer.new(exception.record).serialize,
       status: :unprocessable_entity
     )
   end
 
   def render_not_found_response
-    render_response(message: "Not Found",
-                    status: :not_found)
+    render_response(message: 'Not Found', status: :not_found)
   end
 
   def render_forbidden
-    render_response(message: "Forbidden",
-                    status: :forbidden)
+    render_response(message: 'Forbidden', status: :forbidden)
   end
 
   def render_response(status:, obj: nil, errors: {}, message: nil)

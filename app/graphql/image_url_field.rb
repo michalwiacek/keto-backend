@@ -8,8 +8,8 @@ class ImageUrlField < GraphQL::Schema::FieldExtension
     #  - it could be set explicitly via extension options
     #  - or we imply that is the same as the field name w/o "_url"
     # suffix (e.g., "avatar_url" => "avatar")
-    attachment = options&.[](:attachment) ||
-                 field.original_name.to_s.sub(/_url$/, "")
+    attachment =
+      options&.[](:attachment) || field.original_name.to_s.sub(/_url$/, '')
 
     # that's the name of the Active Record association
     @attachment_assoc = "#{attachment}_attachment"
@@ -30,7 +30,8 @@ class ImageUrlField < GraphQL::Schema::FieldExtension
       object.object.class,
       # that's where we use our association name
       attachment_assoc => :blob
-    ).load(object.object)
+    )
+      .load(object.object)
   end
 
   # This method is called if the result of the `resolve`
@@ -40,7 +41,7 @@ class ImageUrlField < GraphQL::Schema::FieldExtension
 
     # variant = arguments.fetch(:variant, :medium)
     # value = value.variant(variant) if variant
-    value = value.variant(resize: "600x600")
+    value = value.variant(resize: '600x600')
 
     Rails.application.routes.url_helpers.url_for(value)
   end

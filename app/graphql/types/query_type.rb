@@ -8,9 +8,13 @@ module Types
 
     def articles(**args)
       if args[:tags]
-        Article.published.where('published_at <= ?', DateTime.current).tagged_with(args[:tags]).limit(10).preload(:user)
+        Article.published.where('published_at <= ?', DateTime.current)
+          .tagged_with(args[:tags])
+          .limit(10)
+          .preload(:user)
       else
-        Article.published.where('published_at <= ?', DateTime.current).limit(10).preload(:user)
+        Article.published.where('published_at <= ?', DateTime.current).limit(10)
+          .preload(:user)
       end
     end
 
