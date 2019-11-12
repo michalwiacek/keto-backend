@@ -53,9 +53,7 @@ namespace :rails do
   task :console do
     on roles(:app), primary: true do
       rails_env = fetch(:production)
-      execute_interactively "#{bundle_cmd} #{
-                              current_path
-                            }/script/rails console #{rails_env}"
+      execute_interactively "#{bundle_cmd} #{current_path}/script/rails console #{rails_env}"
     end
   end
 
@@ -63,9 +61,7 @@ namespace :rails do
   task :dbconsole do
     on roles(:db), primary: true do
       rails_env = fetch(:production)
-      execute_interactively "#{bundle_cmd} #{
-                              current_path
-                            }/script/rails dbconsole #{rails_env}"
+      execute_interactively "#{bundle_cmd} #{current_path}/script/rails dbconsole #{rails_env}"
     end
   end
 
@@ -83,9 +79,7 @@ namespace :rails do
   def bundle_cmd
     if fetch(:rbenv_ruby)
       # FIXME: Is there a better way to do this? How does "execute :bundle" work?
-      "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{
-        File.join(fetch(:rbenv_path), '/bin/rbenv')
-      } exec bundle exec"
+      "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{File.join(fetch(:rbenv_path), '/bin/rbenv')} exec bundle exec"
     else
       'ruby '
     end
