@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  default_url_options host: ENV['HOST']
+  default_url_options host: ENV['APP_HOST']
   if Rails.env.development?
     mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql'
   end
