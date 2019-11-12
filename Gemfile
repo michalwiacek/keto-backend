@@ -75,3 +75,4 @@ gem 'prettier'
 gem 'pronto'
 gem 'pronto-rubocop', require: false
 gem 'pronto-flay', require: false
+gem "passenger", ">= 5.3.2", require: "phusion_passenger/rack_handler"
