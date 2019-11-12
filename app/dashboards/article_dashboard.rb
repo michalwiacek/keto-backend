@@ -12,6 +12,7 @@ class ArticleDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     user: Field::BelongsTo,
     id: Field::Number,
+    category: Field::BelongsTo,
     tags: Field::ActsAsTaggable,
     description: Field::String,
     article_images: Field::ActiveStorage.with_options(),
@@ -52,6 +53,7 @@ class ArticleDashboard < Administrate::BaseDashboard
     id
     user
     main_image
+    category
     tags
     title
     published
@@ -64,6 +66,7 @@ class ArticleDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     user
     id
+    category
     tags
     description
     article_images
@@ -99,6 +102,7 @@ class ArticleDashboard < Administrate::BaseDashboard
     user
     published
     featured
+    category
     tags
     description
     article_images

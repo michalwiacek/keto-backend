@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   namespace :admin do
     mount GraphdocRuby::Application, at: 'graphdoc'
     resources :users, only: %i[index show new create edit update destroy]
+    resources :categories, only: %i[index show new create edit update destroy]
     resources :articles, only: %i[index show new create edit update destroy]
     resources :recipes, only: %i[index show new create edit update destroy]
     resources :steps, only: %i[index show new create edit update destroy]

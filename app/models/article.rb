@@ -7,6 +7,7 @@ class Article < ApplicationRecord
   has_many_attached :article_images
 
   belongs_to :user
+  belongs_to :category
 
   validates :title, presence: true, length: { maximum: 128 }
   # validates :user_id, presence: true #TODO wyłączone ze wględu na testy. naprawić testy i włączyć
@@ -19,6 +20,8 @@ class Article < ApplicationRecord
   before_save :set_all_dates
 
   scope :published, -> { where(published: true, archived: false) }
+  scope :after_publication, -> { published.where('published_at <= ?', DateTime.current) }
+  scope :featured, -> { where(featured: true) }
 
   private
 
