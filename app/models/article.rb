@@ -20,6 +20,8 @@ class Article < ApplicationRecord
   before_save :set_all_dates
 
   scope :published, -> { where(published: true, archived: false) }
+  scope :after_publication, -> { published.where('published_at <= ?', DateTime.current) }
+  scope :featured, -> { where(featured: true) }
 
   private
 

@@ -50,6 +50,8 @@ group :development, :test do
   gem 'rubocop', '~> 0.71.0', require: false # Automatic Ruby code style checking tool. Aims to enforce the community-driven Ruby Style Guide.
   gem 'rubocop-rails'
   gem 'shoulda-matchers', '4.0.0.rc1' # Making tests easy on the fingers and eyes
+  gem 'search_object', '1.2.0'
+  gem 'search_object_graphql', '0.1'
 end
 
 group :development do

@@ -8,15 +8,24 @@ module Types
 
     def articles(**args)
       if args[:tags]
-        Article.published.where('published_at <= ?', DateTime.current)
+        Article.after_publication
           .tagged_with(args[:tags])
           .limit(10)
           .preload(:user)
       else
-        Article.published.where('published_at <= ?', DateTime.current).limit(10)
+        Article.after_publication
+          .limit(10)
           .preload(:user)
       end
     end
+
+    field :search_articles, function: Resolvers::ArticlesSearch
+
+    def featured_article
+      Article.after_publication.featured
+    end
+
+    field :featured_article, [Types::ArticleType], null: false
 
     field :recipes, [Types::RecipeType], null: false
 
