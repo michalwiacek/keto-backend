@@ -10,15 +10,7 @@ set :repo_url, 'git@github.com:michalwiacek/keto-backend.git'
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/home/deploy/#{fetch :application}"
 
-append :linked_dirs,
-       'log',
-       'tmp/pids',
-       'tmp/cache',
-       'tmp/sockets',
-       'vendor/bundle',
-       '.bundle',
-       'public/system',
-       'public/uploads'
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
 
 set :keep_releases, 5
 # Default value for :format is :airbrussh.
@@ -68,10 +60,7 @@ namespace :rails do
   def execute_interactively(command)
     user = fetch(:user)
     port = fetch(:port) || 22
-    cmd =
-      "ssh -l #{user} #{host} -p #{port} -t 'cd #{deploy_to}/current && #{
-        command
-      }'"
+    cmd = "ssh -l #{user} #{host} -p #{port} -t 'cd #{deploy_to}/current && #{command}'"
     info "Connecting to #{host}"
     exec cmd
   end
