@@ -4,6 +4,8 @@
 # You can define all roles on a single server, or split them:
 
 server '145.239.86.159:2202', user: 'deploy', roles: %w[app db web]
+
+set :env_file_path, 'docker/production/.env'
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 

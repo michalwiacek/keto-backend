@@ -23,6 +23,7 @@ gem 'capistrano', '~> 3.11'
 gem 'capistrano-rails', '~> 1.4'
 gem 'capistrano-passenger', '~> 0.2.0'
 gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
+gem 'capistrano-docker', github: 'netguru/capistrano-docker'
 gem 'devise'
 gem 'devise-jwt'
 gem 'fast_jsonapi'
@@ -75,4 +76,3 @@ gem 'prettier'
 gem 'pronto'
 gem 'pronto-rubocop', require: false
 gem 'pronto-flay', require: false
-gem "passenger", ">= 5.3.2", require: "phusion_passenger/rack_handler"

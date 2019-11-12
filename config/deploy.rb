@@ -40,6 +40,28 @@ set :keep_releases, 5
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
+namespace :deploy do
+  desc "Initialize application"
+  task :initialize do
+    invoke 'composing:build'
+    invoke 'composing:database:up'
+    invoke 'composing:database:create'
+    invoke 'composing:database:migrate'
+  end
+
+  after :published, :restart do
+    invoke 'composing:restart:web'
+    invoke 'composing:database:migrate'
+  end
+
+  before :finished, :clear_containers do
+    on roles(:app) do
+      execute "docker ps -a -q -f status=exited | xargs -r docker rm -v"
+      execute "docker images -f dangling=true -q | xargs -r docker rmi -f"
+    end
+  end
+end
+
 namespace :rails do
   desc 'Open the rails console on primary app server'
   task :console do
