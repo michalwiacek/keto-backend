@@ -7,6 +7,7 @@ class Article < ApplicationRecord
   has_many_attached :article_images
 
   belongs_to :user
+  belongs_to :category
 
   validates :title, presence: true, length: { maximum: 128 }
   # validates :user_id, presence: true #TODO wyłączone ze wględu na testy. naprawić testy i włączyć
