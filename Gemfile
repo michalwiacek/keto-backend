@@ -11,7 +11,6 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.3'
 gem 'turbolinks'
-
 gem 'acts-as-taggable-on'
 gem 'administrate'
 gem 'administrate-field-active_storage'
@@ -35,6 +34,8 @@ gem 'promise.rb'
 gem 'rack-cors'
 gem 'rolify'
 gem 'graphdoc-ruby'
+gem 'search_object', '1.2.0'
+gem 'search_object_graphql', '0.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -50,8 +51,6 @@ group :development, :test do
   gem 'rubocop', '~> 0.71.0', require: false # Automatic Ruby code style checking tool. Aims to enforce the community-driven Ruby Style Guide.
   gem 'rubocop-rails'
   gem 'shoulda-matchers', '4.0.0.rc1' # Making tests easy on the fingers and eyes
-  gem 'search_object', '1.2.0'
-  gem 'search_object_graphql', '0.1'
 end
 
 group :development do
