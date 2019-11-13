@@ -14,11 +14,16 @@ before_install:
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
 
+install:
+  - docker-compose build
+
 before_script:
-  - docker-compose up -d --build
+  - docker-compose run --rm --no-deps backend echo 'Gems now pre-installed'
+  - docker-compose -f docker-compose.yml -f docker-compose.ci.yml up -d
+  - docker ps
 
 script:
-  - docker-compose exec backend bundle exec rspec .
+  - docker-compose exec backend rails test
 
 after_script:
   - docker-compose down

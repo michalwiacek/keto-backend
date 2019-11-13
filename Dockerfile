@@ -15,6 +15,7 @@ RUN apk update && \
         pcre-dev \
         libffi-dev \
         postgresql-dev \
+        cmake \
         tzdata
 
 RUN gem install bundler --no-document && \
