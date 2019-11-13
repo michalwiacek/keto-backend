@@ -1,7 +1,10 @@
 version: '3'
 services:
   db:
-    image: postgres
+    image: postgres:10-alpine
+    build:
+      context: ./services/backend/db
+      dockerfile: Dockerfile
     ports:
       - "5432"
   backend:
@@ -17,3 +20,13 @@ services:
     depends_on:
       - db
     user: rails
+  nginx:
+    build:
+      context: ./services/nginx
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 443:443
+      - 80:80
+    depends_on:
+      - backend

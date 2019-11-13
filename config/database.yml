@@ -90,5 +90,5 @@ production:
   encoding: utf8
   pool: 15
   database: keto-backend_production
-  username: keto-backend
+  username: <%= ENV['KETO-BACKEND_DATABASE_USERNAME'] %>
   password: <%= ENV['KETO-BACKEND_DATABASE_PASSWORD'] %>
