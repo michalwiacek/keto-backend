@@ -1,19 +1,22 @@
-version: '3'
+version: "2"
 services:
-  db:
-    image: postgres
+  web:
+    restart: always
+    build:
+      context: .
+      dockerfile: docker/production/Dockerfile
+    env_file: docker/production/.env
+    ports:
+      - "80:80"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:alpine
     ports:
       - "5432"
-  backend:
-    build:
-      context: keto-backend
-      args:
-        UID: ${UID:-1001}
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 8080 -b 0.0.0.0"
-    volumes:
-      - .:/usr/src/app
-    ports:
-      - "8080:8080"
-    depends_on:
-      - db
-    user: rails
+    volumes_from:
+      - data
+
+  data:
+    image: postgres:alpine

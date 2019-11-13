@@ -8,9 +8,9 @@ require "capistrano/passenger"
 require "capistrano/rbenv"
 require "capistrano/console"
 require "capistrano/bundler"
-require "capistrano/docker"
-require 'capistrano/docker/assets'
-require 'capistrano/docker/migration'
+# require "capistrano/docker"
+# require 'capistrano/docker/assets'
+# require 'capistrano/docker/migration'
 
 set :rbenv_type, :user
 set :rbenv_ruby, '2.6.5'
