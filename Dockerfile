@@ -1,5 +1,5 @@
- 
 FROM ruby:2.6.5-alpine
+LABEL name="rails-api" version='1'
 ENV LANG C.UTF-8
 
 RUN mkdir /app
@@ -26,7 +26,8 @@ RUN apk update && \
         update-ca-certificates
 
 RUN gem install bundler --no-document && \
-    gem update --system
+    gem update --system && \
+    gem cleanup all
 
 COPY Gemfile Gemfile
 COPY Gemfile.lock Gemfile.lock
