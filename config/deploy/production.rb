@@ -5,8 +5,10 @@
 
 server '145.239.86.159:22', user: 'deploy', roles: %w[app db web]
 
-set :capose_copy, %w(.env)
-set :capose_commands, ["build", "run --rm web rake db:migrate", "run --rm web rake assets:precompile", "up -d"]
+set :env_file_path, '.env'
+
+# set :capose_copy, %w(.env)
+# set :capose_commands, ["build", "run --rm web rake db:migrate", "run --rm web rake assets:precompile", "up -d"]
 # server '145.239.86.159:22', user: 'deploy'
 
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value

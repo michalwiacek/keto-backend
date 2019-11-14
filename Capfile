@@ -5,11 +5,11 @@ require "capistrano/setup"
 require "capistrano/deploy"
 # require "capistrano/rails"
 # require "capistrano/console"
-require "capose"
+# require "capose"
 # require "capistrano/bundler"
 
-set :rbenv_type, :user
-set :rbenv_ruby, '2.6.5'
+# set :rbenv_type, :user
+# set :rbenv_ruby, '2.6.5'
 
 require "capistrano/scm/git"
 install_plugin Capistrano::SCM::Git
