@@ -2,6 +2,7 @@
 lock '~> 3.11.2'
 
 set :application, 'keto-backend'
+set :pty, true
 set :repo_url, 'git@github.com:michalwiacek/keto-backend.git'
 
 # Default branch is :master
@@ -46,6 +47,7 @@ set :current_path, "/home/deploy/#{fetch :application}"
 namespace :deploy do
   desc "Initialize application"
   task :initialize do
+    invoke 'env_file:copy'
     invoke 'composing:build'
     invoke 'composing:database:up'
     invoke 'composing:database:create'
