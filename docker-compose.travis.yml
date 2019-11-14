@@ -6,8 +6,8 @@ services:
       - 'postgres:/var/lib/postgresql/data'
     ports:
       - "5432"
-    # env_file:
-    #   - '.env'
+    env_file:
+      - '.travis.env'
 
   app:
     depends_on:
@@ -21,23 +21,9 @@ services:
     volumes:
       - .:/app
     ports:
-      - "3000"
-    # env_file:
-    #   - '.env'
-
-  nginx:
-    build: 
-      context: .
-      dockerfile: config/containers/Dockerfile-nginx
-    restart: always
-    ports:
-      - 443:443
-      - 80:80
-    depends_on:
-      - postgres
-      - app
-    # env_file:
-    #   - '.env'
+      - "3000:3000"
+    env_file:
+      - '.travis.env'
 
 volumes: 
   postgres:

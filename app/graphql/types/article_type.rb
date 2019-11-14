@@ -2,6 +2,11 @@
 
 module Types
   class ArticleType < Types::BaseObject
+    graphql_name "Article"
+    description "An article"
+
+    implements GraphQL::Relay::Node.interface
+
     field :id, ID, null: false
     field :title, String, null: false
     field :description, String, null: false

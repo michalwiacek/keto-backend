@@ -2,6 +2,11 @@
 
 module Types
   class RecipeType < Types::BaseObject
+    graphql_name "Recipe"
+    description "A recipe"
+
+    implements GraphQL::Relay::Node.interface
+
     field :id, ID, null: false
     field :name, String, null: false
     field :description, String, null: false

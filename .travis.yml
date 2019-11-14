@@ -1,0 +1,37 @@
+sudo: required
+
+language: ruby
+
+services:
+  - docker
+addons:
+  postgresql: 10
+  apt:
+    packages:
+    - postgresql-10-postgis-2.4
+
+env:
+  DOCKER_COMPOSE_VERSION: 1.23.2
+
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+
+install:
+  - docker-compose -f docker-compose.travis.yml build
+
+before_script:
+  - eval $(egrep -v '^#' .travis.env | xargs) docker-compose -f docker-compose.travis.yml config
+  - docker-compose run --rm --no-deps app echo 'Gems now pre-installed'
+  - docker-compose -f docker-compose.travis.yml up -d
+  - docker ps
+  - docker-compose -f docker-compose.travis.yml run app rake db:create RAILS_ENV=test
+  - docker-compose -f docker-compose.travis.yml run app rake db:migrate RAILS_ENV=test
+
+script:
+  - docker-compose -f docker-compose.travis.yml exec app rspec
+
+after_script:
+  - docker-compose down
