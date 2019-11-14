@@ -19,8 +19,9 @@ gem 'administrate-field-image', '~> 1.1'
 gem 'administrate-field-nested_has_many'
 gem 'administrate-field-simple_markdown'
 gem 'carrierwave', '~> 1.0'
-# gem 'capistrano', '~> 3.11'
-# gem 'capistrano-rails', '~> 1.4'
+gem 'capistrano', '~> 3.11'
+gem 'capistrano-rails', '~> 1.4'
+gem 'capose', require: false
 # gem 'capistrano-passenger', '~> 0.2.0'
 # gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
 gem 'devise'
@@ -76,4 +77,3 @@ gem 'prettier'
 gem 'pronto'
 gem 'pronto-rubocop', require: false
 gem 'pronto-flay', require: false
-# gem "passenger", ">= 5.3.2", require: "phusion_passenger/rack_handler"

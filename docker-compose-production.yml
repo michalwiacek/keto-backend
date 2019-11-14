@@ -1,0 +1,43 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:10.3-alpine
+    volumes: 
+      - 'postgres:/var/lib/postgresql/data'
+    ports:
+      - "5432"
+    env_file:
+      - '.env'
+
+  app:
+    depends_on:
+      - postgres
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        UID: ${UID:-1001}
+        command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b 0.0.0.0"
+    volumes:
+      - .:/app
+    ports:
+      - "3000"
+    env_file:
+      - '.env'
+
+  nginx:
+    build: 
+      context: .
+      dockerfile: config/containers/Dockerfile-nginx
+    restart: always
+    ports:
+      - 443:443
+      - 80:80
+    depends_on:
+      - postgres
+      - app
+    env_file:
+      - '.env'
+
+volumes: 
+  postgres:
