@@ -22,6 +22,8 @@ before_script:
   - docker-compose run --rm --no-deps app echo 'Gems now pre-installed'
   - docker-compose -f docker-compose.travis.yml up -d
   - docker ps
+  - docker-compose run app rake db:create RAILS_ENV=test
+  - docker-compose run app rake db:migrate RAILS_ENV=test
 
 script:
   - docker-compose exec app rspec
