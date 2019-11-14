@@ -6,8 +6,8 @@ services:
       - 'postgres:/var/lib/postgresql/data'
     ports:
       - "5432"
-    env_file:
-      - '.env'
+    # env_file:
+    #   - '.env'
 
   app:
     depends_on:
@@ -22,8 +22,8 @@ services:
       - .:/app
     ports:
       - "3000"
-    env_file:
-      - '.env'
+    # env_file:
+    #   - '.env'
 
   nginx:
     build: 
@@ -36,8 +36,8 @@ services:
     depends_on:
       - postgres
       - app
-    env_file:
-      - '.env'
+    # env_file:
+    #   - '.env'
 
 volumes: 
   postgres:
