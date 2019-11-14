@@ -4,5 +4,7 @@ FactoryBot.define do
     main_image_background_hex_color { '#EEEEEE' }
     body_markdown { FFaker::LoremPL.paragraphs }
     association :user, factory: :user
+    published { "true" }
+    category
   end
 end

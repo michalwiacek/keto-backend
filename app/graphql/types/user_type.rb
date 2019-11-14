@@ -2,6 +2,11 @@
 
 module Types
   class UserType < Types::BaseObject
+    graphql_name "User"
+    description "A user"
+
+    implements GraphQL::Relay::Node.interface
+
     field :id, ID, null: false
     field :first_name, String, null: false
     field :last_name, String, null: false

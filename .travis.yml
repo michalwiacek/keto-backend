@@ -18,12 +18,13 @@ install:
   - docker-compose build
 
 before_script:
+  - eval $(egrep -v '^#' .env | xargs) docker-compose config
   - docker-compose run --rm --no-deps backend echo 'Gems now pre-installed'
   - docker-compose -f docker-compose.yml -f docker-compose.ci.yml up -d
   - docker ps
 
 script:
-  - docker-compose exec backend rails test
+  - docker-compose exec app rails test
 
 after_script:
   - docker-compose down

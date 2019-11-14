@@ -19,10 +19,10 @@ gem 'administrate-field-image', '~> 1.1'
 gem 'administrate-field-nested_has_many'
 gem 'administrate-field-simple_markdown'
 gem 'carrierwave', '~> 1.0'
-gem 'capistrano', '~> 3.11'
-gem 'capistrano-rails', '~> 1.4'
-gem 'capistrano-passenger', '~> 0.2.0'
-gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
+# gem 'capistrano', '~> 3.11'
+# gem 'capistrano-rails', '~> 1.4'
+# gem 'capistrano-passenger', '~> 0.2.0'
+# gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
 gem 'devise'
 gem 'devise-jwt'
 gem 'fast_jsonapi'
@@ -51,6 +51,7 @@ group :development, :test do
   gem 'rubocop', '~> 0.71.0', require: false # Automatic Ruby code style checking tool. Aims to enforce the community-driven Ruby Style Guide.
   gem 'rubocop-rails'
   gem 'shoulda-matchers', '4.0.0.rc1' # Making tests easy on the fingers and eyes
+  gem 'rspec-graphql_matchers'
 end
 
 group :development do
@@ -75,4 +76,4 @@ gem 'prettier'
 gem 'pronto'
 gem 'pronto-rubocop', require: false
 gem 'pronto-flay', require: false
-gem "passenger", ">= 5.3.2", require: "phusion_passenger/rack_handler"
+# gem "passenger", ">= 5.3.2", require: "phusion_passenger/rack_handler"

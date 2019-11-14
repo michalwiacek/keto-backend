@@ -14,18 +14,27 @@ RUN apk update && \
         libxslt-dev \
         pcre-dev \
         libffi-dev \
+        openssl \
+        curl-dev \
+        imagemagick \
+        file \
         postgresql-dev \
         cmake \
-        tzdata
+        tzdata \
+        ca-certificates \
+        wget && \
+        update-ca-certificates
 
 RUN gem install bundler --no-document && \
     gem update --system
 
 COPY Gemfile Gemfile
 COPY Gemfile.lock Gemfile.lock
-RUN bundle install --jobs=4 --no-cache
+RUN bundle install --jobs=4 --no-cache --binstubs
 
 COPY . .
+
+LABEL maintainer="Michał Wiącek <michal.wiacek@nekosoft.pl>"
 
 EXPOSE 3000
 CMD ["rails", "s", "-b", "0.0.0.0"]
