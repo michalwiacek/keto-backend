@@ -6,8 +6,8 @@ services:
       - 'postgres:/var/lib/postgresql/data'
     ports:
       - "5432"
-    # env_file:
-    #   - '.env'
+    env_file:
+      - '.travis.env'
 
   app:
     depends_on:
@@ -22,8 +22,8 @@ services:
       - .:/app
     ports:
       - "3000:3000"
-    # env_file:
-    #   - '.env'
+    env_file:
+      - '.travis.env'
 
 volumes: 
   postgres:
