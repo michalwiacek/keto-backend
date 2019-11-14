@@ -7,7 +7,7 @@ services:
     ports:
       - "5432"
     env_file:
-      - '.env'
+      - '../shared/.env'
 
   app:
     depends_on:
@@ -23,7 +23,7 @@ services:
     ports:
       - "3000"
     env_file:
-      - '.env'
+      - '../shared/.env'
 
   nginx:
     build: 
@@ -37,7 +37,7 @@ services:
       - postgres
       - app
     env_file:
-      - '.env'
+      - '../shared/.env'
 
 volumes: 
   postgres:

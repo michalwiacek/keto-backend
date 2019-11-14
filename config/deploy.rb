@@ -11,8 +11,11 @@ set :repo_url, 'git@github.com:michalwiacek/keto-backend.git'
 set :deploy_to, "/home/deploy/#{fetch :application}"
 
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
+append :linked_files, '.env'
 
 set :keep_releases, 5
+set :current_dir, '/currnet'
+set :current_path, "/home/deploy/#{fetch :application}"
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
 
