@@ -4,6 +4,11 @@ language: ruby
 
 services:
   - docker
+addons:
+  postgresql: 10
+  apt:
+    packages:
+    - postgresql-10-postgis-2.4
 
 env:
   DOCKER_COMPOSE_VERSION: 1.23.2
