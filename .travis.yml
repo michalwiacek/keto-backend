@@ -19,7 +19,7 @@ install:
 
 before_script:
   - eval $(egrep -v '^#' .travis.env | xargs) docker-compose config
-  - docker-compose run --rm --no-deps backend echo 'Gems now pre-installed'
+  - docker-compose run --rm --no-deps app echo 'Gems now pre-installed'
   - docker-compose -f docker-compose.yml -f docker-compose.travis.yml up -d
   - docker ps
 
