@@ -3,7 +3,12 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-server '145.239.86.159:2202', user: 'deploy', roles: %w[app db web]
+server '145.239.86.159:22', user: 'deploy', roles: %w[app db web]
+
+set :capose_copy, %w(.env)
+set :capose_commands, ["build", "run --rm web rake db:migrate", "run --rm web rake assets:precompile", "up -d"]
+# server '145.239.86.159:22', user: 'deploy'
+
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
