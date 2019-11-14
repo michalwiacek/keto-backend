@@ -24,7 +24,7 @@ before_script:
   - docker ps
 
 script:
-  - docker-compose exec app rails test
+  - docker-compose exec app rspec
 
 after_script:
   - docker-compose down
