@@ -1,4 +1,6 @@
 linters:
+  shellcheck:
+    shell: bash
   rubocop:
     fixer: true
   csslint: {  }
