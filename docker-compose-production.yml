@@ -2,6 +2,7 @@ version: '3'
 services:
   postgres:
     image: postgres:10.3-alpine
+    init: true
     volumes: 
       - 'postgres:/var/lib/postgresql/data'
     ports:
@@ -10,13 +11,13 @@ services:
       - '.env'
 
   app:
+    init: true
     depends_on:
       - postgres
     build:
       context: .
       dockerfile: Dockerfile
       args:
-        UID: ${UID:-1001}
         command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b 0.0.0.0"
     volumes:
       - .:/app
@@ -26,6 +27,7 @@ services:
       - '.env'
 
   nginx:
+    init: true
     build: 
       context: .
       dockerfile: config/containers/Dockerfile-nginx
@@ -40,4 +42,4 @@ services:
       - '.env'
 
 volumes: 
-  postgres:
+  postgres: {}
