@@ -1,17 +1,14 @@
-version: '3'
+version: '3.3'
 services:
   postgres:
     image: postgres:10.3-alpine
-    init: true
     volumes: 
       - 'postgres:/var/lib/postgresql/data'
     ports:
       - "5432"
     env_file:
       - '.env'
-
   app:
-    init: true
     depends_on:
       - postgres
     build:
@@ -25,9 +22,7 @@ services:
       - "3000"
     env_file:
       - '.env'
-
   nginx:
-    init: true
     build: 
       context: .
       dockerfile: config/containers/Dockerfile-nginx
