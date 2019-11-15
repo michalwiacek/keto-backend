@@ -17,7 +17,7 @@ namespace :env_file do
   task :copy do
     on roles(:app) do
       within current_path do
-        execute "cp /../#{shared_path}/.env #{current_path}/.env"
+        execute "cp ../#{shared_path}/.env #{current_path}/.env"
       end
     end
   end
