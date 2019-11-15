@@ -52,7 +52,7 @@ namespace :composing do
         within current_path do
           execute("docker-compose",
             "--project-name=#{fetch(:application)}_#{fetch(:stage)}",
-            "-f", "docker-compose.#{fetch(:stage)}.yml",
+            "-f", "docker-compose-#{fetch(:stage)}.yml",
             "up", "-d", "--no-deps", "postgres"
           )
         end
@@ -66,7 +66,7 @@ namespace :composing do
         within current_path do
           execute("docker-compose",
             "--project-name=#{fetch(:application)}_#{fetch(:stage)}",
-            "-f", "docker-compose.#{fetch(:stage)}.yml",
+            "-f", "docker-compose-#{fetch(:stage)}.yml",
             "run", "--rm", "app", "rake", "db:create"
           )
         end
@@ -79,7 +79,7 @@ namespace :composing do
         within current_path do
           execute("docker-compose",
             "--project-name=#{fetch(:application)}_#{fetch(:stage)}",
-            "-f", "docker-compose.#{fetch(:stage)}.yml",
+            "-f", "docker-compose-#{fetch(:stage)}.yml",
             "run", "--rm", "app", "rake", "db:migrate"
           )
         end
