@@ -42,5 +42,5 @@ production:
   encoding: utf8
   pool: 15
   database: keto-backend_production
-  username: <%= ENV['POSTGRES_USER'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  username: <%= ENV['POSTGRES_USER'] %> || Rails.application.credentials.dig(:database, :user)
+  password: <%= ENV['POSTGRES_PASSWORD'] %> || Rails.application.credentials.dig(:database, :password)
