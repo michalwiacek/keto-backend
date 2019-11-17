@@ -8,7 +8,7 @@
 # remove to skip rbenv and ruby installation
 # You can't install rbenv without ruby, they go together
 _rbenv: v1.1.2
-_ruby: 2.5.6
+_ruby: 2.6.5
 
 
 #=== EDIT THIS! ================================================================
