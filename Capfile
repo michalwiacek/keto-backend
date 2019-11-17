@@ -3,14 +3,13 @@ require "capistrano/setup"
 
 # Include default deployment tasks
 require "capistrano/deploy"
-# require "capistrano/rails"
+require "capistrano/rails"
 require "capistrano/console"
-# require 'capistrano/rbenv'
-# require "capose"
-# require "capistrano/bundler"
+require 'capistrano/rbenv'
+require "capistrano/bundler"
 
-# set :rbenv_type, :user
-# set :rbenv_ruby, '2.6.5'
+set :rbenv_type, :user
+set :rbenv_ruby, '2.6.5'
 
 require "capistrano/scm/git"
 install_plugin Capistrano::SCM::Git

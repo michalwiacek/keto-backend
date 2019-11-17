@@ -6,31 +6,23 @@ class Api::V1::ArticlesController < Api::V1::ApplicationController
   before_action :authorize_article, except: %i[show index]
 
   def index
-    render_response(status: :ok, obj: ArticleSerializer.new(articles))
+    json_response(obj: ArticleSerializer.new(articles))
   end
 
   def show
-    render_response(status: :ok, obj: ArticleSerializer.new(article))
+    json_response(obj: ArticleSerializer.new(article))
   end
 
   def create
-    if article.save!
-      render_response(status: :ok, obj: ArticleSerializer.new(article))
-    end
+    json_response(status: :created, obj: ArticleSerializer.new(article)) if article.save!
   end
 
   def update
-    if article.update!(article_params)
-      render_response(status: :ok, obj: ArticleSerializer.new(article))
-    end
+    json_response(status: :ok, obj: ArticleSerializer.new(article)) if article.update!(article_params)
   end
 
   def destroy
-    if article.destroy
-      render_response(status: :ok)
-    else
-      render_response(status: :unprocessable_entity)
-    end
+    article.destroy ? json_response(status: :ok) : json_response(status: :unprocessable_entity)
   end
 
   private

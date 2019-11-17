@@ -67,7 +67,7 @@ namespace :composing do
           execute("docker-compose",
             "--project-name=#{fetch(:application)}_#{fetch(:stage)}",
             "-f", "docker-compose-#{fetch(:stage)}.yml",
-            "run", "--rm", "app", "rake", "db:create"
+            "run", "--rm", "app", "rails", "db:create"
           )
         end
       end
@@ -80,7 +80,7 @@ namespace :composing do
           execute("docker-compose",
             "--project-name=#{fetch(:application)}_#{fetch(:stage)}",
             "-f", "docker-compose-#{fetch(:stage)}.yml",
-            "run", "--rm", "app", "rake", "db:migrate"
+            "run", "--rm", "app", "rails", "db:migrate"
           )
         end
       end

@@ -1,0 +1,3 @@
+mail._domainkey	IN	TXT	( "v=DKIM1; h=sha256; k=rsa; t=y; "
+	  "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6/C8UXjvmodQEkZ1bSd73WG6neueAO4I53P71sQKEHVNApvgiwtIPcsgckP6VMK057BjZB6SUM54J1zrFS/1KAko5XG8Hd1SDFqy5GsnZJb/szTPh2r7urT++DEsvMouHATrmzLvAUA6Xf1goxmd4ZaNPqeafBeOMTZKMVfgweKYoNfsEbXBZ93QKkwowHlpCfCervHpzFpfqA"
+	  "8OJ9khz97emmgFmK8nUayX3QK5CZExZD7bsozr2UB9g5KS0ZGdDdJH+mKfMYuTUhTTSHPtvf8xBWP7l7BvmfaEMbiue+m3HzKU8CNnMjSW4Pk9z13G1PjXIQWtktvbVEJvomNKXwIDAQAB" )  ; ----- DKIM key mail for ketowcy.pl
