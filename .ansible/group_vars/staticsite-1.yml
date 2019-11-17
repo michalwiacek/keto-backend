@@ -1,0 +1,29 @@
+# Configuration applied to passenger-nginx-app server group.
+#
+# This host rolls up fresh Passenger-nginx package, sets up ruby, application folders
+# and configs
+
+---
+#=== EDIT THIS! ================================================================
+# Middleman/nginx options
+
+# for SSL certificates notifications etc.
+_admin_email: michalwiacek@nekosoft.pl
+
+# no wildcards!
+_ssl_domains:
+  - domains:
+    - ketowcy.pl
+    - www.ketowcy.pl
+
+
+# Remove if you need only nginx + passenger + rbenv/ruby setup, no apps
+_site: {
+  url: ketowcy.pl, # app web url
+  name: keto,    # internal app name as used in rb files, in logrotates etc.
+  www_path: '/home/{{ _remote_user }}/apps/keto/www', # exposed HTML folder
+  logs_path: '/home/{{ _remote_user }}/apps/keto/log', # nginx access/error logs folder
+  nginx_config_prefix: '' # optional nginx config filename for sort priority
+}
+
+# See `./templates/nginx/` for configs to be applied for Nginx and passenger

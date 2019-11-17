@@ -1,46 +1,29 @@
-# PostgreSQL. Versions 9.1 and up are supported.
-#
-# Install the pg driver:
-#   gem install pg
-# On OS X with Homebrew:
-#   gem install pg -- --with-pg-config=/usr/local/bin/pg_config
-# On OS X with MacPorts:
-#   gem install pg -- --with-pg-config=/opt/local/lib/postgresql84/bin/pg_config
-# On Windows:
-#   gem install pg
-#       Choose the win32 build.
-#       Install PostgreSQL and put its /bin directory on your path.
-#
-# Configure Using Gemfile
-# gem 'pg'
-#
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  host: postgres
-  # For details on connection pooling, see Rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  port: 5432
-  username: <%= ENV['POSTGRES_USER'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
-
-development:
-  <<: *default
-  database: keto-backend_development
-  host: localhost
 
 test:
-  <<: *default
-  database: keto-backend_test
-  host: postgres
-  username: <%= ENV['POSTGRES_USER'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode    
+  template: template0
+  database: (azbuker_test_db)
+  pool: 5
+  username: (your_local_pg_user for azbuker)
+  password: (your_local_pg_user pass)
+  host: localhost
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  template: template0
+  database: (azbuker_dev_db)
+  pool: 5
+  username: (your_local_pg_user for azbuker)
+  password: (your_local_pg_user pass)
+  host: localhost
 
 production:
-  <<: *default
-  encoding: utf8
-  pool: 15
-  database: keto-backend_production
-  username: <%= ENV['POSTGRES_USER'] %> || Rails.application.credentials.dig(:database, :user)
-  password: <%= ENV['POSTGRES_PASSWORD'] %> || Rails.application.credentials.dig(:database, :password)
+  adapter: postgresql
+  encoding: unicode
+  database: (azbuker_production_db)
+  pool: 5
+  username: (your_production_pg_user)
+  password: (_postgres_user_pass)
+  host: localhost
