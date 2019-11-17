@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 ## We'll assume a system-level install for testing purposes
@@ -16,7 +18,7 @@ describe file('/usr/local/rbenv/bin/rbenv') do
 end
 
 describe command('bash -l -c "which rbenv"') do
-  its(:stdout) { should match /\/usr\/local\/rbenv\/bin\/rbenv/ }
+  its(:stdout) { should match %r{/usr/local/rbenv/bin/rbenv} }
   it { should return_exit_status 0 }
 end
 

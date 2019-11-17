@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'Redis' do
@@ -6,7 +8,7 @@ describe 'Redis' do
     it { should be_running }
   end
 
-  describe port(26379) do
+  describe port(26_379) do
     it { should be_listening.on('0.0.0.0').with('tcp') }
   end
 
