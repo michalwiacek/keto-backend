@@ -66,6 +66,7 @@ end
 group :test do
   gem 'database_cleaner', '~> 1.7'
   gem 'ffaker'
+  gem 'simplecov', require: false
 end
 
 gem 'decent_exposure', '~> 3.0', '>= 3.0.2' # Way to encapsulate shared emthods in controller
