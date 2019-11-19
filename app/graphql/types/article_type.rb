@@ -29,6 +29,7 @@ module Types
         .load(object)
         .then do |article_images|
         article_images.map do |image|
+          image = image.variant( resize: '700x700')
           Rails.application.routes.url_helpers.rails_blob_url(image)
         end
       end

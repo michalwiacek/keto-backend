@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'uploads'
 
 class Article < ApplicationRecord
   acts_as_taggable_on :tags
@@ -22,6 +23,12 @@ class Article < ApplicationRecord
   scope :published, -> { where(published: true, archived: false) }
   scope :after_publication, -> { published.where('published_at <= ?', DateTime.current) }
   scope :featured, -> { where(featured: true) }
+
+  def main_image_header_variant
+    variation =
+      ActiveStorage::Variation.new(Uploads.resize_to_fit(width: 600, height: 600, blob: main_image.blob))
+    ActiveStorage::Variant.new(main_image.blob, variation)
+  end
 
   private
 
