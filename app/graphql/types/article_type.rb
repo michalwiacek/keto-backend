@@ -26,9 +26,9 @@ module Types
     field :user, Types::UserType, null: false
 
     def main_image_thumbnail_url
-      AssociationLoader.for(object.class, main_image: :blob).load(object).then do |image|
+      AssociationLoader.for(object.class, main_image_attachment: :blob).load(object).then do |image|
         image = image.variant(resize: '300x300')
-        Rails.application.routes.url_helpers.rails_blob_url(image)
+        Rails.application.routes.url_helpers.url_for(image)
       end
     end
 

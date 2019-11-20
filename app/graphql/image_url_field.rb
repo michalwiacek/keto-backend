@@ -30,8 +30,7 @@ class ImageUrlField < GraphQL::Schema::FieldExtension
       object.object.class,
       # that's where we use our association name
       attachment_assoc => :blob
-    )
-      .load(object.object)
+    ).load(object.object)
   end
 
   # This method is called if the result of the `resolve`
