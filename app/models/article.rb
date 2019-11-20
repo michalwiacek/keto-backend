@@ -22,6 +22,7 @@ class Article < ApplicationRecord
 
   scope :published, -> { where(published: true, archived: false) }
   scope :after_publication, -> { published.where('published_at <= ?', DateTime.current) }
+  scope :with_category, ->(category) { where(category: category) }
   scope :featured, -> { where(featured: true) }
 
   def main_image_header_variant

@@ -24,7 +24,7 @@ module Types
     field :slug, String, null: true
     field :main_image_background_hex_color, String, null: true
     field :user, Types::UserType, null: false
-    field :cateogry, Types::CategoryType, null: false
+    field :category, Types::CategoryType, null: false
 
     def main_image_thumbnail_url
       AssociationLoader.for(object.class, main_image_attachment: :blob).load(object).then do |image|

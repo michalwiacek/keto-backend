@@ -12,6 +12,11 @@ module Types
           .tagged_with(args[:tags])
           .limit(10)
           .preload(:user)
+      elsif args[:category]
+        Article.after_publication
+          .with_category(args[:category])
+          .limit(10)
+          .preload(:user)
       else
         Article.after_publication
           .limit(10)
@@ -50,7 +55,7 @@ module Types
       argument :id, ID, required: true
     end
 
-    field :cateogry, Types::CateogryType, null: false do
+    field :category, Types::CategoryType, null: false do
       argument :id, ID, required: true
     end
 
@@ -62,8 +67,8 @@ module Types
       Ingredient.find(id)
     end
 
-    def cateogry(id:)
-      Cateogry.fidn(id)
+    def category(id:)
+      Category.fidn(id)
     end
 
     def user(id:)
