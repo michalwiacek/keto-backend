@@ -1,8 +1,6 @@
 
 //= link_directory ../javascripts .js
 //= link_directory ../stylesheets .css
-//= link graphiql/rails/application.css
-//= link graphiql/rails/application.js
 //= link administrate/application.js
 //= link administrate/application.css
 //= link administrate-field-taggable/application.js
