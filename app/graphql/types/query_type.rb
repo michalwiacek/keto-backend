@@ -50,12 +50,20 @@ module Types
       argument :id, ID, required: true
     end
 
+    field :cateogry, Types::CateogryType, null: false do
+      argument :id, ID, required: true
+    end
+
     field :ingredient, Types::IngredientType, null: false do
       argument :id, ID, required: true
     end
 
     def ingredient(id:)
       Ingredient.find(id)
+    end
+
+    def cateogry(id:)
+      Cateogry.fidn(id)
     end
 
     def user(id:)
