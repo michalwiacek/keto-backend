@@ -26,4 +26,10 @@
 
 /public/*
 
-.envcoverage
+.env
+coverage
+docker/development/.env
+docker/production/.env
+docker/staging/.env
+config/database.yml
+config/database.yml
