@@ -27,7 +27,7 @@ module Types
     field :search_articles, function: Resolvers::ArticlesSearch
 
     def last_featured_article
-      Article.after_publication.featured.last.preload(:user)
+      Article.after_publication.featured.last
     end
 
     def featured_articles
