@@ -18,7 +18,7 @@ module Types
           .limit(10)
           .preload(:user)
       else
-        Article.after_publication
+        Article.after_publication.not_featured
           .limit(10)
           .preload(:user)
       end
@@ -26,11 +26,17 @@ module Types
 
     field :search_articles, function: Resolvers::ArticlesSearch
 
-    def featured_article
-      Article.after_publication.featured
+    def last_featured_article
+      Article.after_publication.featured.last.preload(:user)
     end
 
-    field :featured_article, [Types::ArticleType], null: false
+    def featured_articles
+      Article.after_publication.featured.preload(:user)
+    end
+
+    field :featured_articles, [Types::ArticleType], null: false
+
+    field :last_featured_article, Types::ArticleType, null: false
 
     field :recipes, [Types::RecipeType], null: false
 

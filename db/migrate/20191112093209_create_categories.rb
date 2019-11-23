@@ -8,7 +8,7 @@ class CreateCategories < ActiveRecord::Migration[5.2]
   end
 
   def self.down
-    remove_table :categories
+    drop_table :categories
     remove_reference :articles, :category
   end
 end

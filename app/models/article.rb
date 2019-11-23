@@ -24,6 +24,7 @@ class Article < ApplicationRecord
   scope :after_publication, -> { published.where('published_at <= ?', DateTime.current) }
   scope :with_category, ->(category) { where(category: category) }
   scope :featured, -> { where(featured: true) }
+  scope :not_featured, -> { where(featured: false) }
 
   def main_image_header_variant
     variation =
