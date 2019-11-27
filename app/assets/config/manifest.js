@@ -9,3 +9,5 @@
 //= link administrate-field-nested_has_many/application.css
 //= link administrate-field-simple_markdown/application.js
 //= link administrate-field-simple_markdown/application.css
+//= link graphiql/rails/application.css
+//= link graphiql/rails/application.js

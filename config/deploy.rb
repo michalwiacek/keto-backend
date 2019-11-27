@@ -12,7 +12,7 @@ set :repo_url, 'git@github.com:michalwiacek/keto-backend.git'
 set :deploy_to, "/home/deploy/apps/#{fetch :application}"
 
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
-set :linked_files, fetch(:linked_files, []).push('.env','.rbenv-vars','config/database.yml', 'config/master.key')
+set :linked_files, fetch(:linked_files, []).push('.env', '.rbenv-vars', 'config/database.yml', 'config/master.key')
 set :keep_releases, 5
 # set :current_dir, '/current'
 # set :current_path, "/home/deploy/#{fetch :application}"
@@ -65,7 +65,6 @@ set :keep_releases, 5
 #     end
 #   end
 # end
-
 
 namespace :rails do
   desc 'Open the rails console on primary app server'

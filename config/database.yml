@@ -27,20 +27,22 @@ default: &default
 
 development:
   <<: *default
-  database: keto-backend_development
+  database: keto_development
   host: localhost
+  username: <%= Rails.application.credentials.dig(:database, :user) %>
+  password: <%= Rails.application.credentials.dig(:database, :password) %>
 
 test:
   <<: *default
-  database: keto-backend_test
-  host: postgres
-  username: <%= ENV['POSTGRES_USER'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  database: keto_test
+  host: localhost
+  username: <%= Rails.application.credentials.dig(:database, :user) %>
+  password: <%= Rails.application.credentials.dig(:database, :password) %>
 
-production:
-  <<: *default
-  encoding: utf8
-  pool: 15
-  database: keto-backend_production
-  username: <%= ENV['POSTGRES_USER'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
+# production:
+#   <<: *default
+#   encoding: utf8
+#   pool: 15
+#   database: keto-backend_production
+#   username: <%= ENV['POSTGRES_USER'] %>
+#   password: <%= ENV['POSTGRES_PASSWORD'] %>
