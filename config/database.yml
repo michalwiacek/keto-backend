@@ -29,15 +29,15 @@ development:
   <<: *default
   database: keto_development
   host: localhost
-  username: <%= Rails.application.credentials.dig(:database, :user) %>
-  password: <%= Rails.application.credentials.dig(:database, :password) %>
+  username: <%= Rails.application.credentials.dig(:development, :database, :user) %>
+  password: <%= Rails.application.credentials.dig(:development, :database, :password) %>
 
 test:
   <<: *default
   database: keto_test
   host: localhost
-  username: <%= Rails.application.credentials.dig(:database, :user) %>
-  password: <%= Rails.application.credentials.dig(:database, :password) %>
+  username: <%= Rails.application.credentials.dig(:development, :database, :user) %>
+  password: <%= Rails.application.credentials.dig(:development, :database, :password) %>
 
 # production:
 #   <<: *default

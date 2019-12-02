@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql'
   end
   post '/graphql', to: 'graphql#execute'
-  devise_for :users, controllers: { sessions: 'sessions' }
+  devise_for :users, controllers: { sessions: 'sessions' }, skip: [:registrations]
   devise_scope :user do
     get 'users/current', to: 'sessions#show'
   end

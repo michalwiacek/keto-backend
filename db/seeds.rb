@@ -21,5 +21,6 @@ admin = {
 
 a = User.create!(admin)
 a.add_role :admin
+a.confirm
 
 p "created admin with email: #{admin_email}, password: #{admin_password}"
