@@ -74,7 +74,7 @@ module Types
     end
 
     def category(id:)
-      Category.fidn(id)
+      Category.find(id)
     end
 
     def user(id:)

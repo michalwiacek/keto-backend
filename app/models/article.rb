@@ -28,8 +28,31 @@ class Article < ApplicationRecord
 
   def main_image_header_variant
     variation =
-      ActiveStorage::Variation.new(Uploads.resize_to_fit(width: 600, height: 600, blob: main_image.blob))
+    ActiveStorage::Variation.new(Uploads.resize_to_fit(width: 600, height: 600, blob: main_image.blob))
     ActiveStorage::Variant.new(main_image.blob, variation)
+  end
+
+  def self.sluggable
+    all.extending(Sluggable::Finder)
+  end
+
+  def self.override_to_param_enabled?
+    true
+  end
+
+  def self.toggle_override_to_param(enabled)
+    singleton_class.instance_eval do
+      define_method(:override_to_param_enabled?) do |enabled|
+        enabled
+      end
+    end
+  end
+
+  def to_param
+    return super unless self.class.override_to_param_enabled?
+    return nil unless persisted?
+
+    slug
   end
 
   private
