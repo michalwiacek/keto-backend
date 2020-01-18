@@ -9,17 +9,21 @@ module Types
 
     def articles(**args)
       if args[:tags]
-        Article.after_publication
+        Article
+          .after_publication
           .tagged_with(args[:tags])
           .limit(10)
           .preload(:user)
       elsif args[:category]
-        Article.after_publication
+        Article
+          .after_publication
           .with_category(args[:category])
           .limit(10)
           .preload(:user)
       else
-        Article.after_publication.not_featured
+        Article
+          .after_publication
+          .not_featured
           .limit(10)
           .preload(:user)
       end
@@ -33,9 +37,9 @@ module Types
 
     def featured_articles(**kwargs)
       if kwargs[:limit]
-        Article.after_publication.featured.last(kwargs[:limit]).preload(:user)
+        Article.after_publication.featured&.last(kwargs[:limit])
       else
-        Article.after_publication.featured.preload(:user)
+        Article.after_publication.featured&.preload(:user)
       end
     end
 
