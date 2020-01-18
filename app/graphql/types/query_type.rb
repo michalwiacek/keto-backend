@@ -4,6 +4,7 @@ module Types
   class QueryType < Types::BaseObject
     field :articles, [Types::ArticleType], null: false do
       argument :tags, [String], required: false
+      argument :category, String, required: false
     end
 
     def articles(**args)
@@ -30,11 +31,17 @@ module Types
       Article.after_publication.featured.last
     end
 
-    def featured_articles
-      Article.after_publication.featured.preload(:user)
+    def featured_articles(**kwargs)
+      if kwargs[:limit]
+        Article.after_publication.featured.last(kwargs[:limit]).preload(:user)
+      else
+        Article.after_publication.featured.preload(:user)
+      end
     end
 
-    field :featured_articles, [Types::ArticleType], null: false
+    field :featured_articles, [Types::ArticleType], null: false do
+      argument :limit, Int, required: false
+    end
 
     field :last_featured_article, Types::ArticleType, null: false
 

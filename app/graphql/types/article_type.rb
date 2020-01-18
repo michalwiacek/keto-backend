@@ -34,7 +34,8 @@ module Types
     end
 
     def article_images_urls
-      AssociationLoader.for(object.class, article_images_attachments: :blob)
+      AssociationLoader
+        .for(object.class, article_images_attachments: :blob)
         .load(object)
         .then do |article_images|
         article_images.map do |image|
